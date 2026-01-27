@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BTF Digital Labs - A mobile app development studio crafting thoughtful iOS and Android experiences.">
+  <title>BTF Digital Labs</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-bg-deep: #0a0e17;
+      --color-bg: #0f1420;
+      --color-bg-elevated: #161d2d;
+      --color-text: #e8eaed;
+      --color-text-muted: #8b93a7;
+      --color-accent-cyan: #4fd1c5;
+      --color-accent-blue: #63b3ed;
+      --color-accent-purple: #9f7aea;
+      --color-accent-magenta: #ed64a6;
+      --gradient-glow: linear-gradient(135deg, #4fd1c5 0%, #63b3ed 25%, #9f7aea 50%, #ed64a6 75%, #4fd1c5 100%);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--color-bg-deep);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.015;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 4rem 2rem;
+    }
+
+    /* Ambient glow behind hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, 
+        rgba(79, 209, 197, 0.08) 0%, 
+        rgba(99, 179, 237, 0.05) 25%,
+        rgba(159, 122, 234, 0.03) 50%,
+        transparent 70%);
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .company-name {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent-cyan) 50%, var(--color-accent-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      color: var(--color-text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* Section styling */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .about {
+      background: linear-gradient(180deg, var(--color-bg-deep) 0%, var(--color-bg) 100%);
+    }
+
+    .section-content {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent-cyan);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+    }
+
+    .about-text strong {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      background: var(--color-bg);
+      position: relative;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-bg-elevated), transparent);
+    }
+
+    .contact-prompt {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-text);
+      margin-bottom: 2rem;
+    }
+
+    .contact-link {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: 50px;
+      position: relative;
+      background: var(--color-bg-elevated);
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 50px;
+      padding: 1px;
+      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple), var(--color-accent-magenta));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background: var(--color-bg-deep);
+      transform: translateY(-2px);
+    }
+
+    .contact-link:hover::before {
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      background: var(--color-bg-deep);
+    }
+
+    .footer-content {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero {
+        padding: 3rem 1.5rem;
+      }
+
+      .tagline {
+        padding: 0 1rem;
+      }
+
+      .about-text {
+        font-size: 1rem;
+      }
+
+      .contact-prompt {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* Subtle animation for page load */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .section-content {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="company-name">BTF Digital Labs</h1>
+        <p class="tagline">Crafting mobile experiences that feel like second nature—apps built to bring people closer.</p>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="section-content">
+        <h2 class="section-title">About</h2>
+        <p class="about-text">
+          We're a <strong>mobile app development studio</strong> with a simple focus: building iOS and Android applications that people genuinely enjoy using. Every detail matters—from the first tap to the hundredth. We believe great software comes from patience, craftsmanship, and caring deeply about the people who will hold it in their hands.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="section-content">
+        <p class="contact-prompt">Let's build something together.</p>
+        <a href="mailto:joshua@btfappdev.com" class="contact-link">joshua@btfappdev.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 BTF Digital Labs</p>
+    </div>
+  </footer>
+</body>
+</html>
