@@ -1,443 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BTF Digital Labs LLC is a U.S.-based software development company creating digital applications and platforms that help people work smarter, stay healthier, and express themselves creatively.">
-  <title>BTF Digital Labs LLC</title>
-  <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --color-bg-deep: #080c14;
-      --color-bg: #0d1219;
-      --color-bg-elevated: #141c28;
-      --color-bg-card: #111820;
-      --color-text: #e8eaed;
-      --color-text-secondary: #a8b2c1;
-      --color-text-muted: #6b7a8f;
-      --color-accent-cyan: #4fd1c5;
-      --color-accent-blue: #63b3ed;
-      --color-accent-purple: #9f7aea;
-      --color-accent-magenta: #ed64a6;
-      --color-border: #1e2a3a;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background-color: var(--color-bg-deep);
-      color: var(--color-text);
-      line-height: 1.7;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Subtle grain texture */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.018;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      z-index: 1000;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 6rem 2rem;
-      position: relative;
-    }
-
-    /* Ambient glow */
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 140%;
-      height: 80%;
-      background: radial-gradient(ellipse at center,
-        rgba(79, 209, 197, 0.07) 0%,
-        rgba(99, 179, 237, 0.05) 20%,
-        rgba(159, 122, 234, 0.04) 40%,
-        rgba(237, 100, 166, 0.02) 60%,
-        transparent 75%);
-      pointer-events: none;
-      filter: blur(60px);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-    }
-
-    .company-name {
-      font-size: clamp(2.25rem, 7vw, 3.5rem);
-      font-weight: 650;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent-cyan) 60%, var(--color-accent-blue) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .tagline {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--color-accent-cyan);
-      margin-bottom: 2rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .intro {
-      font-size: 1.125rem;
-      color: var(--color-text-secondary);
-      line-height: 1.85;
-      max-width: 580px;
-      margin: 0 auto;
-    }
-
-    /* Content Sections */
-    section {
-      padding: 5rem 2rem;
-      position: relative;
-    }
-
-    .section-alt {
-      background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-deep) 100%);
-    }
-
-    .section-header {
-      margin-bottom: 1.75rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--color-text);
-      margin-bottom: 0.25rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple));
-      border-radius: 2px;
-    }
-
-    .section-text {
-      font-size: 1.0625rem;
-      color: var(--color-text-secondary);
-      line-height: 1.85;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-text:last-child {
-      margin-bottom: 0;
-    }
-
-    .highlight {
-      color: var(--color-text);
-    }
-
-    /* Lists */
-    .feature-list {
-      list-style: none;
-      padding: 0;
-      margin: 1.5rem 0 0 0;
-    }
-
-    .feature-list li {
-      font-size: 1.0625rem;
-      color: var(--color-text-secondary);
-      padding: 0.6rem 0;
-      padding-left: 1.75rem;
-      position: relative;
-    }
-
-    .feature-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 1.1rem;
-      width: 8px;
-      height: 8px;
-      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-blue));
-      border-radius: 50%;
-    }
-
-    /* Product Areas Grid */
-    .areas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .area-item {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      font-size: 0.9375rem;
-      color: var(--color-text-secondary);
-      transition: all 0.25s ease;
-    }
-
-    .area-item:hover {
-      border-color: rgba(79, 209, 197, 0.3);
-      background: var(--color-bg-elevated);
-      transform: translateY(-2px);
-    }
-
-    .area-icon {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    /* About Section */
-    .about-section {
-      background: var(--color-bg);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .about-card {
-      background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-elevated) 100%);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple), var(--color-accent-magenta));
-    }
-
-    .about-label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-accent-cyan);
-      margin-bottom: 1rem;
-    }
-
-    .about-text {
-      font-size: 1rem;
-      color: var(--color-text-secondary);
-      line-height: 1.8;
-    }
-
-    /* Footer */
-    footer {
-      padding: 3.5rem 2rem;
-      text-align: center;
-      background: var(--color-bg-deep);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .footer-contact {
-      margin-bottom: 1.25rem;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--color-text);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      padding: 0.875rem 2rem;
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-border);
-      border-radius: 50px;
-      transition: all 0.25s ease;
-    }
-
-    .contact-link:hover {
-      border-color: var(--color-accent-cyan);
-      background: var(--color-bg-card);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(79, 209, 197, 0.1);
-    }
-
-    .footer-copyright {
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
-    }
-
-    /* Responsive */
-    @media (max-width: 640px) {
-      .hero {
-        min-height: 60vh;
-        padding: 4rem 1.5rem;
-      }
-
-      section {
-        padding: 3.5rem 1.5rem;
-      }
-
-      .intro {
-        font-size: 1rem;
-      }
-
-      .section-text,
-      .feature-list li {
-        font-size: 1rem;
-      }
-
-      .about-card {
-        padding: 1.75rem;
-      }
-
-      .areas-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-content {
-      animation: fadeInUp 0.7s ease-out;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="company-name">BTF Digital Labs LLC</h1>
-        <p class="tagline">Building the Future with Technology</p>
-        <p class="intro">We're a software development company based in the United States, focused on creating digital applications and platforms that help people work smarter, stay healthier, and express themselves creatively.</p>
-      </div>
-    </section>
-
-    <section class="section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">What We Do</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="BTF Digital Labs builds thoughtful software products for health, storytelling, and career growth."
+    />
+    <title>BTF Digital Labs | Product Studio</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/">
+          <span class="brand-mark">BTF</span>
+          <span>BTF Digital Labs</span>
+        </a>
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <button class="dropdown-toggle" type="button" aria-haspopup="true">Work</button>
+            <div class="dropdown-menu" aria-label="Work pages">
+              <a href="/routine/">Routine Fitness</a>
+              <a href="/jrny/">JRNY</a>
+              <a href="/myproxy/">MyProxy</a>
+              <a href="/remix-career/">Remix Career</a>
+            </div>
+          </div>
+          <a href="#approach">Approach</a>
+          <a href="mailto:connect@btfappdev.com">Contact</a>
         </div>
-        <p class="section-text">At BTF Digital Labs, we design and build software products from the ground up—mobile apps, web platforms, cloud services, and the infrastructure that powers them. Our work spans career tools, business applications, health and fitness platforms, educational resources, and creative technology.</p>
-        <p class="section-text">We believe great software comes from understanding real problems and building solutions that actually work for the people who use them.</p>
-      </div>
-    </section>
+      </nav>
+    </header>
 
-    <section>
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Approach</h2>
-        </div>
-        <p class="section-text">We build products that:</p>
-        <ul class="feature-list">
-          <li>Solve real problems for real people</li>
-          <li>Are designed to last and evolve over time</li>
-          <li>Put user experience and reliability first</li>
-          <li>Balance innovation with practical value</li>
-        </ul>
-        <p class="section-text" style="margin-top: 1.75rem;">Technology should make life easier, not more complicated. That's the lens we use when building everything we create.</p>
-      </div>
-    </section>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="kicker">Independent product studio</p>
+            <h1>Useful software for the moments that shape people.</h1>
+            <p class="lead">
+              BTF Digital Labs designs and builds products for fitness, career
+              growth, storytelling, and the personal systems people rely on to
+              move forward.
+            </p>
+            <div class="cta-row">
+              <a class="button" href="#products">Explore products</a>
+              <a class="button secondary" href="mailto:connect@btfappdev.com">Work with us</a>
+            </div>
+          </div>
 
-    <section class="section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Product Areas</h2>
+          <aside class="studio-card" aria-label="BTF product focus areas">
+            <div class="studio-card-inner">
+              <p class="eyebrow">Now Building</p>
+              <h3>Four focused products, one shared standard.</h3>
+              <div class="signal-list">
+                <div class="signal">
+                  <span class="signal-mark"></span>
+                  <div>
+                    <strong>Routine Fitness</strong>
+                    <span>Adaptive training plans built around real life.</span>
+                  </div>
+                </div>
+                <div class="signal">
+                  <span class="signal-mark"></span>
+                  <div>
+                    <strong>JRNY</strong>
+                    <span>A storytelling space for memory, meaning, and momentum.</span>
+                  </div>
+                </div>
+                <div class="signal">
+                  <span class="signal-mark"></span>
+                  <div>
+                    <strong>MyProxy</strong>
+                    <span>A career advocate that represents your experience clearly.</span>
+                  </div>
+                </div>
+                <div class="signal">
+                  <span class="signal-mark"></span>
+                  <div>
+                    <strong>Remix Career</strong>
+                    <span>A sister venture for better-fit career strategy.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
-        <p class="section-text">Our applications support people across different aspects of their lives:</p>
-        <div class="areas-grid">
-          <div class="area-item">
-            <span class="area-icon">📈</span>
-            Career growth and professional development
+      </section>
+
+      <section id="products" class="section dark-panel">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Work</p>
+              <h2>Built around specific human problems.</h2>
+            </div>
+            <p class="copy">
+              Each project starts with a lived workflow: how people train,
+              explain themselves, preserve their stories, make their next career
+              move, and make better decisions with less friction.
+            </p>
           </div>
-          <div class="area-item">
-            <span class="area-icon">💼</span>
-            Business productivity and planning
-          </div>
-          <div class="area-item">
-            <span class="area-icon">🏃</span>
-            Health, fitness, and wellbeing
-          </div>
-          <div class="area-item">
-            <span class="area-icon">📚</span>
-            Learning and skill development
-          </div>
-          <div class="area-item">
-            <span class="area-icon">🎨</span>
-            Creative expression through music, storytelling, and the arts
+
+          <div class="product-grid">
+            <a class="product-card" href="/routine/">
+              <div class="product-card-media">
+                <div class="mini-screen" aria-hidden="true">
+                  <span class="mini-line short"></span>
+                  <span class="mini-block"></span>
+                  <span class="mini-line long"></span>
+                  <span class="mini-line medium"></span>
+                </div>
+              </div>
+              <div class="product-card-body">
+                <span class="product-meta">Adaptive fitness</span>
+                <h3>Routine Fitness</h3>
+                <p>
+                  Workout planning that adjusts to your goals, constraints,
+                  progress, and the feedback you give mid-session.
+                </p>
+                <span class="product-link">View product</span>
+              </div>
+            </a>
+
+            <a class="product-card" href="/jrny/">
+              <div class="product-card-media">
+                <div class="mini-screen" aria-hidden="true">
+                  <span class="mini-line medium"></span>
+                  <span class="mini-line long"></span>
+                  <span class="mini-block"></span>
+                  <span class="mini-line short"></span>
+                </div>
+              </div>
+              <div class="product-card-body">
+                <span class="product-meta">Personal storytelling</span>
+                <h3>JRNY</h3>
+                <p>
+                  A guided storytelling app for capturing personal chapters,
+                  turning memories into narratives, and sharing them with care.
+                </p>
+                <span class="product-link">View product</span>
+              </div>
+            </a>
+
+            <a class="product-card" href="/myproxy/">
+              <div class="product-card-media">
+                <div class="mini-screen" aria-hidden="true">
+                  <span class="mini-block"></span>
+                  <span class="mini-line long"></span>
+                  <span class="mini-line medium"></span>
+                  <span class="mini-line short"></span>
+                </div>
+              </div>
+              <div class="product-card-body">
+                <span class="product-meta">Career representation</span>
+                <h3>MyProxy</h3>
+                <p>
+                  A better way to translate your background, strengths, and
+                  career story into what hiring managers need to understand.
+                </p>
+                <span class="product-link">View product</span>
+              </div>
+            </a>
+
+            <a class="product-card" href="/remix-career/">
+              <div class="product-card-media">
+                <div class="mini-screen" aria-hidden="true">
+                  <span class="mini-line short"></span>
+                  <span class="mini-line long"></span>
+                  <span class="mini-line medium"></span>
+                  <span class="mini-block"></span>
+                </div>
+              </div>
+              <div class="product-card-body">
+                <span class="product-meta">Career strategy</span>
+                <h3>Remix Career</h3>
+                <p>
+                  A sister venture that turns your patterns, skills, and
+                  experience into a practical strategy for a better-fit next move.
+                </p>
+                <span class="product-link">View project</span>
+              </div>
+            </a>
           </div>
         </div>
-        <p class="section-text" style="margin-top: 1.75rem;">Each product we build is developed with a specific audience and purpose in mind.</p>
-      </div>
-    </section>
+      </section>
 
-    <section class="about-section">
-      <div class="container">
-        <div class="about-card">
-          <p class="about-label">About Us</p>
-          <p class="about-text">BTF Digital Labs LLC is a U.S.-based software company specializing in application development and digital product design. We handle everything in-house—from initial concept through design, development, deployment, and ongoing maintenance.</p>
+      <section id="approach" class="section">
+        <div class="container split">
+          <div>
+            <p class="eyebrow">How we build</p>
+            <h2>Quietly capable beats loudly futuristic.</h2>
+          </div>
+          <div class="signal-list">
+            <div class="signal">
+              <span class="signal-mark"></span>
+              <div>
+                <strong>Plain-language product thinking</strong>
+                <span>Clear value, clear audience, clear reason to exist.</span>
+              </div>
+            </div>
+            <div class="signal">
+              <span class="signal-mark"></span>
+              <div>
+                <strong>Software that respects context</strong>
+                <span>Products should adapt to people, not force people into rigid systems.</span>
+              </div>
+            </div>
+            <div class="signal">
+              <span class="signal-mark"></span>
+              <div>
+                <strong>Design with restraint</strong>
+                <span>Useful interfaces, durable patterns, and enough personality to feel owned.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container">
+          <div class="quote-card">
+            <p>
+              We are building a portfolio of products that help people train
+              smarter, tell better stories, and represent themselves with more
+              confidence.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>&copy; BTF Digital Labs LLC</p>
+        <div class="footer-links">
+          <a href="/routine/privacy-policy.html">Routine Privacy</a>
+          <a href="/routine/terms-of-service.html">Routine Terms</a>
+          <a href="mailto:connect@btfappdev.com">connect@btfappdev.com</a>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-contact">
-      <a href="mailto:connect@btfappdev.com" class="contact-link">connect@btfappdev.com</a>
-    </div>
-    <p class="footer-copyright">© BTF Digital Labs LLC</p>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
