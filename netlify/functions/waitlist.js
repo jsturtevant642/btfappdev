@@ -1,5 +1,5 @@
 const crypto = require("node:crypto");
-const { getStore } = require("@netlify/blobs");
+const { connectLambda, getStore } = require("@netlify/blobs");
 const { isAuthorized, unauthorizedResponse } = require("./_auth");
 
 const STORE_NAME = "btf-waitlist";
@@ -107,6 +107,10 @@ async function listSubmissions(event) {
 
 exports.handler = async function handler(event) {
   try {
+    if (event.blobs) {
+      connectLambda(event);
+    }
+
     if (event.httpMethod === "POST") {
       return saveSubmission(event);
     }
