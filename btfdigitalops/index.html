@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>BTF Digital Ops | Waitlist Dashboard</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body class="ops-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/">
+          <span class="brand-mark">BTF</span>
+          <span>BTF Digital Ops</span>
+        </a>
+        <div class="nav-links">
+          <a href="/">Public site</a>
+          <a href="#" id="logout-link">Log out</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <p class="eyebrow">Waitlist dashboard</p>
+          <h1>Email signups</h1>
+          <p class="lead">
+            A simple internal list of product waitlist signups captured from the
+            BTF Digital Labs marketing pages.
+          </p>
+
+          <div id="login-card" class="ops-card ops-login">
+            <div>
+              <h3>Enter ops access code</h3>
+              <p class="copy">Use the same access code as the Routine admin tools.</p>
+            </div>
+            <form id="login-form">
+              <label for="access-code">Access code</label>
+              <input id="access-code" name="accessCode" type="password" autocomplete="current-password" required />
+              <div class="ops-actions">
+                <button class="button" type="submit">View dashboard</button>
+              </div>
+              <p id="login-error" class="ops-error" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div id="dashboard-card" class="ops-card" hidden>
+            <div class="section-heading">
+              <div>
+                <h2>Captured emails</h2>
+                <p id="dashboard-meta" class="ops-meta">Loading signups...</p>
+              </div>
+              <div class="ops-actions">
+                <button class="button secondary" id="refresh-button" type="button">Refresh</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="ops-table">
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Product</th>
+                    <th>Form</th>
+                    <th>Submitted</th>
+                  </tr>
+                </thead>
+                <tbody id="submissions-body"></tbody>
+              </table>
+              <div id="empty-state" class="empty-state" hidden>No signups captured yet.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const loginCard = document.querySelector("#login-card");
+      const dashboardCard = document.querySelector("#dashboard-card");
+      const loginForm = document.querySelector("#login-form");
+      const loginError = document.querySelector("#login-error");
+      const submissionsBody = document.querySelector("#submissions-body");
+      const dashboardMeta = document.querySelector("#dashboard-meta");
+      const emptyState = document.querySelector("#empty-state");
+      const refreshButton = document.querySelector("#refresh-button");
+      const logoutLink = document.querySelector("#logout-link");
+
+      function formatDate(value) {
+        if (!value) return "";
+        return new Intl.DateTimeFormat("en-US", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        }).format(new Date(value));
+      }
+
+      function renderSubmissions(submissions) {
+        submissionsBody.innerHTML = "";
+        emptyState.hidden = submissions.length > 0;
+        dashboardMeta.textContent = `${submissions.length} signup${submissions.length === 1 ? "" : "s"} captured`;
+
+        submissions.forEach((submission) => {
+          const row = document.createElement("tr");
+          [submission.email, submission.product, submission.formName, formatDate(submission.createdAt)].forEach((value) => {
+            const cell = document.createElement("td");
+            cell.textContent = value || "";
+            row.appendChild(cell);
+          });
+          submissionsBody.appendChild(row);
+        });
+      }
+
+      async function loadDashboard() {
+        const response = await fetch("/.netlify/functions/waitlist", {
+          credentials: "same-origin",
+        });
+
+        if (response.status === 401) {
+          loginCard.hidden = false;
+          dashboardCard.hidden = true;
+          return;
+        }
+
+        if (!response.ok) {
+          throw new Error("Unable to load waitlist signups.");
+        }
+
+        const data = await response.json();
+        loginCard.hidden = true;
+        dashboardCard.hidden = false;
+        renderSubmissions(data.submissions || []);
+      }
+
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        loginError.textContent = "";
+
+        const formData = new FormData(loginForm);
+        const response = await fetch("/.netlify/functions/auth", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ accessCode: formData.get("accessCode") }),
+        });
+
+        if (!response.ok) {
+          loginError.textContent = "That access code did not work.";
+          return;
+        }
+
+        await loadDashboard();
+      });
+
+      refreshButton.addEventListener("click", loadDashboard);
+
+      logoutLink.addEventListener("click", async (event) => {
+        event.preventDefault();
+        await fetch("/.netlify/functions/auth", { credentials: "same-origin" });
+        loginCard.hidden = false;
+        dashboardCard.hidden = true;
+      });
+
+      loadDashboard().catch((error) => {
+        loginError.textContent = error.message;
+      });
+    </script>
+  </body>
+</html>

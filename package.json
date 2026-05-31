@@ -1,0 +1,9 @@
+{
+  "name": "btfappdev",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@netlify/blobs": "^10.7.9",
+    "@supabase/supabase-js": "^2.57.4"
+  }
+}
