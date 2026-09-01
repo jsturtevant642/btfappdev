@@ -7,7 +7,8 @@ const SUBMISSIONS_KEY = "submissions";
 const MAX_SUBMISSIONS = 1000;
 
 const PRODUCT_LABELS = {
-  "Routine Fitness": "Routine Fitness",
+  ROUTINE: "ROUTINE",
+  "Routine Fitness": "ROUTINE",
   JRNY: "JRNY",
   MyProxy: "MyProxy",
   "Remix Career": "Remix Career",
@@ -91,7 +92,8 @@ async function saveSubmission(event) {
   submissions.unshift(submission);
   await store.setJSON(SUBMISSIONS_KEY, submissions.slice(0, MAX_SUBMISSIONS));
 
-  return redirectResponse("/thanks/");
+  const thanksPath = product === "ROUTINE" ? "/routine/thanks.html" : "/thanks/";
+  return redirectResponse(thanksPath);
 }
 
 async function listSubmissions(event) {

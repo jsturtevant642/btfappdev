@@ -3,213 +3,231 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROUTINE: AI Fitness Coach</title>
     <meta
       name="description"
-      content="Routine Fitness builds adaptive workout plans around your goals, constraints, progress, and real-time feedback."
+      content="Routines break. ROUTINE adapts. Miss a session and your place is held. Hit your targets and it levels you up. An AI fitness coach for the week you actually had."
     />
-    <title>Routine Fitness | BTF Digital Labs</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="canonical" href="https://btfappdev.com/routine/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ROUTINE: AI Fitness Coach" />
+    <meta
+      property="og:description"
+      content="Routines break. ROUTINE adapts. Miss a session and your place is held. Hit your targets and it levels you up."
+    />
+    <meta property="og:url" content="https://btfappdev.com/routine/" />
+    <meta property="og:image" content="https://btfappdev.com/routine/assets/hero-plan.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/routine/assets/favicon.png" />
+    <link rel="apple-touch-icon" href="/routine/assets/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/routine/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ROUTINE",
+        "alternateName": "ROUTINE: AI Fitness Coach",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS",
+        "description": "An AI fitness coach that holds your place when life interrupts and levels you up when you hit your targets.",
+        "url": "https://btfappdev.com/routine/",
+        "image": "https://btfappdev.com/routine/assets/hero-plan.png",
+        "publisher": {
+          "@type": "Organization",
+          "name": "BTF Digital Labs LLC",
+          "url": "https://btfappdev.com"
+        }
+      }
+    </script>
   </head>
-  <body class="product-routine">
+  <body>
+    <a class="skip" href="#notify">Skip to notify form</a>
     <header class="site-header">
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="/">
-          <span class="brand-mark">BTF</span>
-          <span>BTF Digital Labs</span>
+      <nav class="nav" aria-label="Primary">
+        <a class="wordmark" href="/routine/">
+          <img src="/routine/assets/icon.png" alt="" width="32" height="32" />
+          ROUTINE
         </a>
-        <div class="nav-links">
-          <div class="nav-dropdown">
-            <button class="dropdown-toggle" type="button" aria-haspopup="true">Work</button>
-            <div class="dropdown-menu" aria-label="Work pages">
-              <a href="/routine/">Routine Fitness</a>
-              <a href="/jrny/">JRNY</a>
-              <a href="/myproxy/">MyProxy</a>
-              <a href="/remix-career/">Remix Career</a>
-            </div>
-          </div>
-          <a href="mailto:connect@btfappdev.com">Contact</a>
-        </div>
+        <a class="nav-cta" href="#notify">Get notified</a>
       </nav>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="kicker">Routine Fitness</p>
-            <h1>Training that changes when real life does.</h1>
+          <div>
+            <p class="eyebrow">ROUTINE: AI Fitness Coach</p>
+            <h1>Routines break. ROUTINE adapts.</h1>
             <p class="lead">
-              Routine Fitness creates workouts around your goals, equipment,
-              schedule, experience level, recovery, and preferences, then keeps
-              adjusting as you train.
+              Miss a session and nothing is lost. Your place is held. Hit your
+              targets and ROUTINE levels you up. A coach for the week you
+              actually had.
             </p>
             <div class="cta-row">
-              <a class="button" href="#notify">Request early access</a>
+              <a class="button" href="#notify">Get notified</a>
               <a class="button secondary" href="#how-it-works">How it works</a>
             </div>
           </div>
-
-          <div>
-            <div class="device-stage">
-              <div class="device-frame" aria-label="Routine Fitness placeholder app screenshot">
-                <div class="device-screen">
-                  <div class="screen-topbar">
-                    <span class="screen-pill"></span>
-                    <span class="screen-dot"></span>
-                  </div>
-                  <div class="screen-hero">
-                    <span class="screen-line short"></span>
-                    <span class="screen-line long"></span>
-                    <span class="screen-line medium"></span>
-                  </div>
-                  <div class="screen-grid">
-                    <div class="screen-panel">
-                      <span class="screen-line medium"></span>
-                      <span class="screen-line short"></span>
-                    </div>
-                    <div class="screen-panel">
-                      <span class="screen-line long"></span>
-                      <span class="screen-line short"></span>
-                    </div>
-                    <div class="screen-tile"></div>
-                    <div class="screen-tile"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p class="placeholder-note">Placeholder screen. Replace with final Routine app imagery.</p>
+          <div class="phone">
+            <img
+              src="/routine/assets/hero-plan.png"
+              alt="ROUTINE showing a personalized 5-day strength and cardio plan with the first workout ready to start."
+              width="780"
+              height="1688"
+            />
           </div>
         </div>
       </section>
 
-      <section class="section compact">
-        <div class="container">
-          <div class="proof-strip">
-            <div class="proof-item">
-              <strong>Built around your goal</strong>
-              <span>Strength, endurance, fat loss, mobility, consistency, or a mix.</span>
-            </div>
-            <div class="proof-item">
-              <strong>Adjusted to your constraints</strong>
-              <span>Available equipment, time, injuries, energy, and workout history.</span>
-            </div>
-            <div class="proof-item">
-              <strong>Responsive while you train</strong>
-              <span>Plans can change when a movement, load, or day is not working.</span>
-            </div>
+      <section class="proof">
+        <div class="proof-grid">
+          <div class="proof-item">
+            <strong>Your place is held</strong>
+            <span>Miss a day and the progress waits. No starting over, no streak punishment.</span>
+          </div>
+          <div class="proof-item">
+            <strong>It levels you up</strong>
+            <span>Hit your targets and ROUTINE raises the weight, reps, or distance for you.</span>
+          </div>
+          <div class="proof-item">
+            <strong>Talk to it</strong>
+            <span>“I have 20 minutes.” “My shoulder is off.” The plan responds in plain language.</span>
           </div>
         </div>
       </section>
 
-      <section id="how-it-works" class="section dark-panel">
-        <div class="container split">
-          <div>
+      <section id="how-it-works" class="section sunken">
+        <div class="wrap">
+          <div class="section-heading">
             <p class="eyebrow">How it works</p>
-            <h2>A workout plan that listens before it prescribes.</h2>
-            <p class="lead">
-              Routine is designed for the gap between generic programs and the
-              messy reality of a normal week.
+            <h2>A session for this day, not the week you meant to have.</h2>
+            <p class="copy">
+              ROUTINE is built for busy adults whose weeks do not match rigid
+              plans. Tell it your life. It builds the work. Then it keeps the
+              line toward your goal, whether you showed up or life got in the way.
             </p>
           </div>
           <div class="steps">
             <div class="step">
               <span class="step-index">01</span>
               <div>
-                <h3>Tell Routine what you are working toward.</h3>
-                <p>Goals, experience level, equipment, schedule, movement preferences, and any constraints become the starting point.</p>
+                <h3>Tell ROUTINE what you are working toward.</h3>
+                <p>Goals, equipment, time, and constraints become the starting point. Getting ready for a hike counts.</p>
               </div>
             </div>
             <div class="step">
               <span class="step-index">02</span>
               <div>
-                <h3>Get a session that fits the day.</h3>
-                <p>Routine turns your profile into a workout that feels specific, structured, and doable.</p>
+                <h3>Get a session that fits today.</h3>
+                <p>Hotel gym, twenty minutes, or a full lift. The answer is the next useful session, not a lecture.</p>
               </div>
             </div>
             <div class="step">
               <span class="step-index">03</span>
               <div>
-                <h3>Adjust as your body gives feedback.</h3>
-                <p>Swap movements, tune intensity, respond to soreness, and keep the plan moving without starting over.</p>
+                <h3>Hold progress on misses. Level up on hits.</h3>
+                <p>Missed sessions are information, not failure. When you earn it, the plan adds load on its own.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Why it matters</p>
-              <h2>Consistency needs a plan that can bend.</h2>
+      <section class="section" aria-label="Product screens">
+        <div class="wrap">
+          <div class="shots-intro">
+            <div class="section-heading shots-heading">
+              <p class="eyebrow">Inside the app</p>
+              <h2>Today’s session, the plan, the work, the why.</h2>
             </div>
+            <p class="copy">Real screens from the iOS app. Not mockups.</p>
+          </div>
+          <div class="shot-row">
+            <figure class="shot">
+              <div class="phone">
+                <img src="/routine/assets/home.png" alt="Home screen with today’s session and a resume workout action." width="780" height="1688" />
+              </div>
+              <figcaption>Today: what to do right now.</figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone">
+                <img src="/routine/assets/plan.png" alt="Workout list showing a weekly plan that can be completed in any order." width="780" height="1688" />
+              </div>
+              <figcaption>A week that can be done in any order.</figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone">
+                <img src="/routine/assets/workout.png" alt="Active workout logging sets, weight, and reps for dumbbell bench press." width="780" height="1688" />
+              </div>
+              <figcaption>Log the work as you train.</figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone">
+                <img src="/routine/assets/why.png" alt="Why This Plan screen explaining why a bodyweight plan was designed this way." width="780" height="1688" />
+              </div>
+              <figcaption>Why this plan, in plain language.</figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone">
+                <img src="/routine/assets/progress.png" alt="Progress screen with training totals, a timeline, and logged sessions." width="780" height="1688" />
+              </div>
+              <figcaption>Progress that includes the messy weeks.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="notify" class="section sunken">
+        <div class="capture-card">
+          <div>
+            <p class="eyebrow">Coming to the App Store</p>
+            <h2>Get notified when ROUTINE is live.</h2>
             <p class="copy">
-              Most people do not fail because they lack ambition. They fail
-              because the plan stops matching the reality of their body, time,
-              equipment, and confidence. Routine keeps the work practical.
+              ROUTINE is in App Review. Leave your email and we’ll tell you when
+              it is available on the App Store.
             </p>
           </div>
-
-          <div class="feature-grid">
-            <div class="feature-card">
-              <span class="feature-number">1</span>
-              <h3>Personal from the first session</h3>
-              <p>Workout structure is built from the user profile instead of a one-size-fits-all template.</p>
+          <form
+            name="routine-fitness-waitlist"
+            method="POST"
+            action="/.netlify/functions/waitlist"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="capture-form"
+          >
+            <input type="hidden" name="form-name" value="routine-fitness-waitlist" />
+            <input type="hidden" name="product" value="ROUTINE" />
+            <p class="hidden-field">
+              <label>Do not fill this out: <input name="bot-field" /></label>
+            </p>
+            <label for="routine-email">Email address</label>
+            <div class="capture-row">
+              <input
+                id="routine-email"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+              <button class="button" type="submit">Notify me</button>
             </div>
-            <div class="feature-card">
-              <span class="feature-number">2</span>
-              <h3>Progress without rigidity</h3>
-              <p>Plans can evolve while still preserving direction, progression, and accountability.</p>
-            </div>
-            <div class="feature-card">
-              <span class="feature-number">3</span>
-              <h3>Designed for everyday athletes</h3>
-              <p>Routine meets people where they are, whether they have a full gym, a hotel room, or twenty minutes.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="notify" class="section capture-section">
-        <div class="container">
-          <div class="capture-card">
-            <div>
-              <p class="eyebrow">Coming Soon</p>
-              <h2>Get notified when Routine Fitness becomes available.</h2>
-              <p class="lead">
-                Coming Soon! Enter your email address to get notified when
-                Routine Fitness becomes available!
-              </p>
-            </div>
-            <form
-              name="routine-fitness-waitlist"
-              method="POST"
-              action="/.netlify/functions/waitlist"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              class="capture-form"
-            >
-              <input type="hidden" name="form-name" value="routine-fitness-waitlist" />
-              <input type="hidden" name="product" value="Routine Fitness" />
-              <p class="hidden-field">
-                <label>Do not fill this out: <input name="bot-field" /></label>
-              </p>
-              <label for="routine-email">Email address</label>
-              <div class="capture-row">
-                <input id="routine-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
-                <button type="submit">Notify me</button>
-              </div>
-            </form>
-          </div>
+          </form>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="footer-inner">
-        <p>&copy; BTF Digital Labs LLC</p>
+        <p>A product of BTF Digital Labs LLC</p>
         <div class="footer-links">
+          <a href="/routine/support.html">Support</a>
           <a href="/routine/privacy-policy.html">Privacy</a>
           <a href="/routine/terms-of-service.html">Terms</a>
           <a href="mailto:connect@btfappdev.com">connect@btfappdev.com</a>
