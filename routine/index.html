@@ -6,14 +6,14 @@
     <title>ROUTINE: AI Fitness Coach</title>
     <meta
       name="description"
-      content="Routines break. ROUTINE adapts. Miss a session and your place is held. Hit your targets and it levels you up. An AI fitness coach for the week you actually had."
+      content="Routines break. ROUTINE adapts. Miss a session and your place is held. Hit your targets and review your next step. An AI fitness coach for the week you actually had."
     />
     <link rel="canonical" href="https://btfappdev.com/routine/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="ROUTINE: AI Fitness Coach" />
     <meta
       property="og:description"
-      content="Routines break. ROUTINE adapts. Miss a session and your place is held. Hit your targets and it levels you up."
+      content="Routines break. ROUTINE adapts. Miss a session and your place is held. Hit your targets and review your next step."
     />
     <meta property="og:url" content="https://btfappdev.com/routine/" />
     <meta property="og:image" content="https://btfappdev.com/routine/assets/hero-plan.png" />
@@ -35,7 +35,7 @@
         "alternateName": "ROUTINE: AI Fitness Coach",
         "applicationCategory": "HealthApplication",
         "operatingSystem": "iOS",
-        "description": "An AI fitness coach that holds your place when life interrupts and levels you up when you hit your targets.",
+        "description": "An AI fitness coach that holds your place when life interrupts and suggests your next step when you hit your targets.",
         "url": "https://btfappdev.com/routine/",
         "image": "https://btfappdev.com/routine/assets/hero-plan.png",
         "publisher": {
@@ -54,7 +54,7 @@
           <img src="/routine/assets/icon.png" alt="" width="32" height="32" />
           ROUTINE
         </a>
-        <a class="nav-cta" href="#notify">Get notified</a>
+        <a class="nav-cta" href="#notify" id="nav-download">Get notified</a>
       </nav>
     </header>
 
@@ -66,18 +66,16 @@
             <h1>Routines break. ROUTINE adapts.</h1>
             <p class="lead">
               Miss a session and nothing is lost. Your place is held. Hit your
-              targets and ROUTINE levels you up. A coach for the week you
+              targets and ROUTINE suggests your next step. You approve the changes. A coach for the week you
               actually had.
             </p>
             <div class="cta-row">
-              <a class="button" href="#notify">Get notified</a>
+              <a class="button" href="#notify" id="hero-download"><span>Get notified</span></a>
               <a class="button secondary" href="#how-it-works">How it works</a>
             </div>
           </div>
-          <div class="phone">
-            <span class="phone-btns" aria-hidden="true"></span>
-            <span class="phone-power" aria-hidden="true"></span>
-            <div class="phone-screen">
+          <div class="app-screen">
+            <div class="app-screen-inner">
               <img
                 src="/routine/assets/hero-plan.png"
                 alt="ROUTINE showing a personalized 5-day strength and cardio plan with the first workout ready to start."
@@ -97,7 +95,7 @@
           </div>
           <div class="proof-item">
             <strong>It levels you up</strong>
-            <span>Hit your targets and ROUTINE raises the weight, reps, or distance for you.</span>
+            <span>Hit your targets and review the next step in weight, reps, or distance. Changes are yours to accept.</span>
           </div>
           <div class="proof-item">
             <strong>Talk to it</strong>
@@ -136,7 +134,7 @@
               <span class="step-index">03</span>
               <div>
                 <h3>Hold progress on misses. Level up on hits.</h3>
-                <p>Missed sessions are information, not failure. When you earn it, the plan adds load on its own.</p>
+                <p>Missed sessions are information, not failure. When you earn it, ROUTINE suggests how to progress. Review and accept the change when you are ready.</p>
               </div>
             </div>
           </div>
@@ -154,50 +152,40 @@
           </div>
           <div class="shot-row">
             <figure class="shot">
-              <div class="phone">
-                <span class="phone-btns" aria-hidden="true"></span>
-                <span class="phone-power" aria-hidden="true"></span>
-                <div class="phone-screen">
+              <div class="app-screen">
+                <div class="app-screen-inner">
                   <img src="/routine/assets/home.png" alt="Home screen with today’s session and a resume workout action." width="780" height="1688" />
                 </div>
               </div>
               <figcaption>Today: what to do right now.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="phone">
-                <span class="phone-btns" aria-hidden="true"></span>
-                <span class="phone-power" aria-hidden="true"></span>
-                <div class="phone-screen">
+              <div class="app-screen">
+                <div class="app-screen-inner">
                   <img src="/routine/assets/plan.png" alt="Workout list showing a weekly plan that can be completed in any order." width="780" height="1688" />
                 </div>
               </div>
               <figcaption>A week that can be done in any order.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="phone">
-                <span class="phone-btns" aria-hidden="true"></span>
-                <span class="phone-power" aria-hidden="true"></span>
-                <div class="phone-screen">
+              <div class="app-screen">
+                <div class="app-screen-inner">
                   <img src="/routine/assets/workout.png" alt="Active workout logging sets, weight, and reps for dumbbell bench press." width="780" height="1688" />
                 </div>
               </div>
               <figcaption>Log the work as you train.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="phone">
-                <span class="phone-btns" aria-hidden="true"></span>
-                <span class="phone-power" aria-hidden="true"></span>
-                <div class="phone-screen">
+              <div class="app-screen">
+                <div class="app-screen-inner">
                   <img src="/routine/assets/why.png" alt="Why This Plan screen explaining why a bodyweight plan was designed this way." width="780" height="1688" />
                 </div>
               </div>
               <figcaption>Why this plan, in plain language.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="phone">
-                <span class="phone-btns" aria-hidden="true"></span>
-                <span class="phone-power" aria-hidden="true"></span>
-                <div class="phone-screen">
+              <div class="app-screen">
+                <div class="app-screen-inner">
                   <img src="/routine/assets/progress.png" alt="Progress screen with training totals, a timeline, and logged sessions." width="780" height="1688" />
                 </div>
               </div>
@@ -210,14 +198,16 @@
       <section id="notify" class="section sunken">
         <div class="capture-card">
           <div>
-            <p class="eyebrow">Coming to the App Store</p>
-            <h2>Get notified when ROUTINE is live.</h2>
-            <p class="copy">
-              ROUTINE is in App Review. Leave your email and we’ll tell you when
-              it is available on the App Store.
+            <p class="eyebrow" id="availability">Coming to the App Store</p>
+            <h2 id="download-heading">Get notified when ROUTINE is live.</h2>
+            <p class="copy" id="download-description">
+              ROUTINE is approved and getting ready to launch. Leave your email
+              and we’ll send you the download link when it is available.
             </p>
           </div>
+          <a class="button" id="section-download" hidden>Download ROUTINE</a>
           <form
+            id="launch-waitlist"
             name="routine-fitness-waitlist"
             method="POST"
             action="/.netlify/functions/waitlist"
@@ -258,5 +248,6 @@
         </div>
       </div>
     </footer>
+    <script src="/routine/release.js" defer></script>
   </body>
 </html>
