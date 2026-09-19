@@ -472,10 +472,83 @@ h1 {
   margin-bottom: 24px;
 }
 
+.plans {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.plan {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.plan h3 {
+  font-size: 1.15rem;
+}
+
+.plan-price {
+  margin-top: 10px;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.plan-price span {
+  font-size: 1rem;
+  color: var(--slate);
+}
+
+.plan-note {
+  margin-top: 6px;
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+
+.plan-list {
+  margin-top: 18px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.plan-list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--slate);
+}
+
+.plan-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--slate);
+}
+
+.plan-terms {
+  margin-top: 20px;
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.plan-terms a {
+  color: var(--slate);
+}
+
 @media (max-width: 860px) {
   .hero-grid,
   .capture-card,
   .proof-grid,
+  .plans,
   .shots-intro {
     grid-template-columns: 1fr;
   }
