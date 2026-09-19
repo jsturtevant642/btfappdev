@@ -1,6 +1,6 @@
 // Set this to ROUTINE's verified public App Store URL only when releasing the page.
 // Empty keeps the waitlist visible. This file does not release the app or publish the site.
-const APP_STORE_URL = "";
+const APP_STORE_URL = "https://apps.apple.com/us/app/routine-ai-fitness-coach/id6759007085";
 
 (() => {
   if (!APP_STORE_URL) return;
