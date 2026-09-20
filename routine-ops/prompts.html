@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ROUTINE Prompt Manager</title>
+  <link rel="stylesheet" href="/routine-ops/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="eyebrow">ROUTINE Ops</div>
+        <h1>Prompt Manager</h1>
+        <p class="subtitle">View the live system prompts used by the AI backend, edit them, commit new versions, and manage the active OpenAI model.</p>
+      </div>
+      <div class="nav">
+        <a href="/routine-ops/">Home</a>
+        <a href="/routine-ops/api-usage.html">API usage</a>
+        <a href="/routine-ops/app-usage.html">App usage</a>
+        <a class="active" href="/routine-ops/prompts.html">Prompt manager</a>
+        <button id="logout-button" type="button">Log out</button>
+      </div>
+    </div>
+
+    <div id="status" class="status">Loading prompt manager...</div>
+
+    <div id="content" class="grid hidden" style="gap: 16px;">
+      <section class="panel">
+        <h2>Model Manager</h2>
+        <p class="panel-copy">Inspect the current live model, test a newer compatible model first, and only save when you are ready to switch production traffic.</p>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="current-model">Current live model</label>
+            <input id="current-model" type="text" readonly>
+          </div>
+          <div class="field">
+            <label for="latest-model">Latest suggested model</label>
+            <input id="latest-model" type="text" readonly>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 16px;">
+          <label for="model-select">Select model to test</label>
+          <select id="model-select"></select>
+        </div>
+
+        <div class="actions-row">
+          <button id="use-latest-button" class="button" type="button">Use latest suggestion</button>
+          <button id="test-model-button" class="button" type="button">Test selected model</button>
+          <button id="save-model-button" class="button button-primary" type="button">Save live model</button>
+        </div>
+        <div id="model-status" class="status">Testing does not change production. Saving updates the live model used by new AI requests.</div>
+
+        <div class="field" style="margin-top: 16px;">
+          <label for="model-test-output">Latest test result</label>
+          <textarea id="model-test-output" class="mono" readonly></textarea>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Active Prompt</h2>
+        <p class="panel-copy">Choose a prompt key, edit the live content, add an optional change note, and commit a new version.</p>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="prompt-select">Prompt key</label>
+            <select id="prompt-select"></select>
+          </div>
+          <div class="field">
+            <label for="prompt-description">Description</label>
+            <input id="prompt-description" type="text" placeholder="What this prompt controls">
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 16px;">
+          <label for="change-note">Change note</label>
+          <input id="change-note" type="text" placeholder="Optional note about why this prompt changed">
+        </div>
+
+        <div class="field" style="margin-top: 16px;">
+          <label for="prompt-content">Prompt content</label>
+          <textarea id="prompt-content" class="mono" spellcheck="false"></textarea>
+        </div>
+
+        <div class="actions-row">
+          <button id="reset-button" class="button" type="button">Reset to active version</button>
+          <button id="save-button" class="button button-primary" type="button">Commit prompt change</button>
+        </div>
+        <div id="save-status" class="status">Each commit creates a new version and makes it active immediately.</div>
+      </section>
+
+      <section class="panel">
+        <h2>Version History</h2>
+        <p class="panel-copy">Recent committed versions for the selected prompt.</p>
+        <div id="version-history" class="version-list"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/routine-ops/admin.js"></script>
+  <script>
+    const statusEl = document.getElementById("status");
+    const contentEl = document.getElementById("content");
+    const promptSelect = document.getElementById("prompt-select");
+    const modelSelect = document.getElementById("model-select");
+    const currentModelInput = document.getElementById("current-model");
+    const latestModelInput = document.getElementById("latest-model");
+    const modelStatus = document.getElementById("model-status");
+    const modelTestOutput = document.getElementById("model-test-output");
+    const promptDescription = document.getElementById("prompt-description");
+    const promptContent = document.getElementById("prompt-content");
+    const changeNote = document.getElementById("change-note");
+    const saveStatus = document.getElementById("save-status");
+    const versionHistory = document.getElementById("version-history");
+
+    let prompts = [];
+    let activePromptKey = "";
+    let currentLiveModel = "";
+    let latestSuggestedModel = "";
+
+    document.getElementById("logout-button").addEventListener("click", () => window.RoutineOps.logout());
+    document.getElementById("reset-button").addEventListener("click", () => hydratePrompt(activePromptKey));
+    document.getElementById("save-button").addEventListener("click", savePrompt);
+    document.getElementById("use-latest-button").addEventListener("click", () => {
+      if (latestSuggestedModel) {
+        modelSelect.value = latestSuggestedModel;
+      }
+    });
+    document.getElementById("test-model-button").addEventListener("click", testModel);
+    document.getElementById("save-model-button").addEventListener("click", saveModel);
+    promptSelect.addEventListener("change", (event) => hydratePrompt(event.target.value));
+
+    async function loadModels() {
+      const data = await window.RoutineOps.requestJson("/.netlify/functions/ai-models");
+      currentLiveModel = data.currentModel || "";
+      latestSuggestedModel = data.latestRecommended || currentLiveModel;
+      currentModelInput.value = currentLiveModel;
+      latestModelInput.value = latestSuggestedModel;
+
+      const options = [...new Set([currentLiveModel, ...(data.models || [])])].filter(Boolean);
+      modelSelect.innerHTML = options
+        .map(
+          (model) =>
+            `<option value="${window.RoutineOps.escapeHtml(model)}">${window.RoutineOps.escapeHtml(model)}</option>`
+        )
+        .join("");
+      modelSelect.value = currentLiveModel;
+      modelTestOutput.value = "";
+      modelStatus.textContent = `Current live model: ${currentLiveModel}.`;
+      modelStatus.className = "status";
+    }
+
+    function renderVersionHistory(prompt) {
+      versionHistory.innerHTML = prompt.versions.length
+        ? prompt.versions
+            .map(
+              (version) => `
+                <div class="version-card">
+                  <div class="version-meta">
+                    <span class="pill ${version.isActive ? "success" : ""}">v${window.RoutineOps.escapeHtml(version.version)}</span>
+                    ${version.isActive ? '<span class="pill success">active</span>' : ""}
+                    <span class="muted">${window.RoutineOps.escapeHtml(window.RoutineOps.formatDateTime(version.updatedAt || version.createdAt))}</span>
+                  </div>
+                  <div class="muted">${window.RoutineOps.escapeHtml(version.description || "No description")}</div>
+                  ${
+                    version.metadata && version.metadata.last_change_note
+                      ? `<div class="muted" style="margin-top:8px;">Note: ${window.RoutineOps.escapeHtml(version.metadata.last_change_note)}</div>`
+                      : ""
+                  }
+                </div>
+              `
+            )
+            .join("")
+        : '<div class="muted">No versions found.</div>';
+    }
+
+    function hydratePrompt(promptKey) {
+      activePromptKey = promptKey;
+      const prompt = prompts.find((entry) => entry.promptKey === promptKey);
+      if (!prompt) return;
+
+      promptSelect.value = promptKey;
+      promptDescription.value = prompt.activePrompt?.description || prompt.description || "";
+      promptContent.value = prompt.activePrompt?.content || "";
+      changeNote.value = "";
+      saveStatus.textContent = `Editing ${promptKey}. Active version: v${prompt.activePrompt?.version || "?"}.`;
+      saveStatus.className = "status";
+      renderVersionHistory(prompt);
+    }
+
+    async function load() {
+      await window.RoutineOps.requireSession();
+
+      try {
+        await loadModels();
+        const data = await window.RoutineOps.requestJson("/.netlify/functions/prompts");
+        prompts = data.prompts || [];
+
+        if (!prompts.length) {
+          statusEl.textContent = "No prompts found in the database.";
+          statusEl.className = "status error";
+          return;
+        }
+
+        promptSelect.innerHTML = prompts
+          .map(
+            (prompt) =>
+              `<option value="${window.RoutineOps.escapeHtml(prompt.promptKey)}">${window.RoutineOps.escapeHtml(prompt.promptKey)}</option>`
+          )
+          .join("");
+
+        hydratePrompt(prompts[0].promptKey);
+        statusEl.classList.add("hidden");
+        contentEl.classList.remove("hidden");
+      } catch (error) {
+        statusEl.textContent = error.message;
+        statusEl.className = "status error";
+      }
+    }
+
+    async function testModel() {
+      modelStatus.textContent = "Testing selected model...";
+      modelStatus.className = "status";
+      modelTestOutput.value = "";
+
+      try {
+        const data = await window.RoutineOps.requestJson("/.netlify/functions/test-model", {
+          method: "POST",
+          body: JSON.stringify({
+            model: modelSelect.value,
+          }),
+        });
+
+        modelStatus.textContent = `Test succeeded for ${data.model}.`;
+        modelStatus.className = "status success";
+        modelTestOutput.value = JSON.stringify(
+          {
+            model: data.model,
+            usage: data.usage,
+            content: data.content,
+          },
+          null,
+          2
+        );
+      } catch (error) {
+        modelStatus.textContent = error.message;
+        modelStatus.className = "status error";
+      }
+    }
+
+    async function saveModel() {
+      modelStatus.textContent = "Saving live model...";
+      modelStatus.className = "status";
+
+      try {
+        await window.RoutineOps.requestJson("/.netlify/functions/save-model", {
+          method: "POST",
+          body: JSON.stringify({
+            model: modelSelect.value,
+          }),
+        });
+
+        await loadModels();
+        modelSelect.value = currentLiveModel;
+        modelStatus.textContent = `Live model updated to ${currentLiveModel}.`;
+        modelStatus.className = "status success";
+      } catch (error) {
+        modelStatus.textContent = error.message;
+        modelStatus.className = "status error";
+      }
+    }
+
+    async function savePrompt() {
+      saveStatus.textContent = "Committing prompt change...";
+      saveStatus.className = "status";
+
+      try {
+        await window.RoutineOps.requestJson("/.netlify/functions/save-prompt", {
+          method: "POST",
+          body: JSON.stringify({
+            promptKey: promptSelect.value,
+            description: promptDescription.value,
+            content: promptContent.value,
+            changeNote: changeNote.value,
+          }),
+        });
+
+        const data = await window.RoutineOps.requestJson("/.netlify/functions/prompts");
+        prompts = data.prompts || [];
+        hydratePrompt(promptSelect.value);
+        saveStatus.textContent = "Prompt committed successfully.";
+        saveStatus.className = "status success";
+      } catch (error) {
+        saveStatus.textContent = error.message;
+        saveStatus.className = "status error";
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>

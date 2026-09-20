@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ROUTINE Ops</title>
+  <link rel="stylesheet" href="/routine-ops/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="eyebrow">Private Admin</div>
+        <h1>ROUTINE Usage Console</h1>
+        <p class="subtitle">Basic internal visibility for app usage, AI usage, alerts, and prompt management. This page stays intentionally small and no-frills.</p>
+      </div>
+    </div>
+
+    <div class="grid two-column">
+      <section class="panel">
+        <h2>Access Code</h2>
+        <p class="panel-copy">Enter the shared admin access code to open the protected ROUTINE reporting pages under this domain.</p>
+        <form id="login-form">
+          <div class="form-row">
+            <input id="access-code" type="password" placeholder="Enter access code" autocomplete="current-password">
+            <button class="button button-primary" type="submit">Unlock</button>
+          </div>
+          <div id="login-status" class="status">Session lasts for 12 hours on this browser.</div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Available Pages</h2>
+        <p class="panel-copy">Once unlocked, you can jump straight into any admin page below.</p>
+        <div class="grid">
+          <a class="button" href="/routine-ops/api-usage.html">API usage</a>
+          <a class="button" href="/routine-ops/app-usage.html">App usage</a>
+          <a class="button" href="/routine-ops/prompts.html">Prompt manager</a>
+          <button id="logout-button" class="button hidden" type="button">Log out</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/routine-ops/admin.js"></script>
+  <script>
+    const form = document.getElementById("login-form");
+    const accessCodeInput = document.getElementById("access-code");
+    const loginStatus = document.getElementById("login-status");
+    const logoutButton = document.getElementById("logout-button");
+
+    async function checkSession() {
+      try {
+        await window.RoutineOps.requestJson("/.netlify/functions/session");
+        loginStatus.textContent = "Already authenticated. You can open either reporting page.";
+        loginStatus.className = "status success";
+        logoutButton.classList.remove("hidden");
+      } catch (error) {
+        if (error.status === 401) {
+          loginStatus.textContent = "Session lasts for 12 hours on this browser.";
+          loginStatus.className = "status";
+          return;
+        }
+
+        loginStatus.textContent = error.message;
+        loginStatus.className = "status error";
+      }
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      loginStatus.textContent = "Checking access code...";
+      loginStatus.className = "status";
+
+      try {
+        await window.RoutineOps.requestJson("/.netlify/functions/auth", {
+          method: "POST",
+          body: JSON.stringify({ accessCode: accessCodeInput.value }),
+        });
+
+        loginStatus.textContent = "Unlocked. You can open the reporting pages now.";
+        loginStatus.className = "status success";
+        accessCodeInput.value = "";
+        logoutButton.classList.remove("hidden");
+      } catch (error) {
+        loginStatus.textContent = error.message;
+        loginStatus.className = "status error";
+      }
+    });
+
+    logoutButton.addEventListener("click", () => window.RoutineOps.logout());
+
+    checkSession();
+  </script>
+</body>
+</html>

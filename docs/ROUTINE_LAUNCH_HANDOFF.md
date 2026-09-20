@@ -1,6 +1,6 @@
 # ROUTINE website release handoff
 
-Prepared 2026-09-12. Josh authorized the scoped local commit. App release and website deployment remain pending.
+Prepared 2026-09-12. Website release completed 2026-09-19: `origin/main` at `ff73789`, Netlify production deploy `6aaf1f0e7a3d3d191abf8137`. Live page: https://btfappdev.com/routine/. GitHub auto-build is still not connected; production publishes through the Netlify CLI.
 
 ## Scope
 
@@ -13,7 +13,7 @@ The approved local commit contains only:
 - `docs/PROJECT_STATE.md`
 - `docs/ROUTINE_LAUNCH_HANDOFF.md`
 
-Do not include the unrelated untracked admin functions, `.gitignore`, or `routine-ops/` merely because they are present.
+The original launch commit excluded admin tools. Those files are now tracked: `.gitignore`, `routine-ops/`, and the extra Netlify functions for the ROUTINE ops console.
 
 ## Release
 

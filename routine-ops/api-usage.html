@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ROUTINE API Usage</title>
+  <link rel="stylesheet" href="/routine-ops/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="eyebrow">ROUTINE Ops</div>
+        <h1>API Usage</h1>
+        <p class="subtitle">Last 30 days of AI request volume, cost, reliability, and active alerts.</p>
+      </div>
+      <div class="nav">
+        <a href="/routine-ops/">Home</a>
+        <a class="active" href="/routine-ops/api-usage.html">API usage</a>
+        <a href="/routine-ops/app-usage.html">App usage</a>
+        <a href="/routine-ops/prompts.html">Prompt manager</a>
+        <button id="logout-button" type="button">Log out</button>
+      </div>
+    </div>
+
+    <div id="status" class="status">Loading API usage...</div>
+
+    <div id="content" class="grid hidden" style="gap: 16px;">
+      <section class="panel">
+        <h2>Summary</h2>
+        <p class="panel-copy">Fast read on volume, cost, and failure rate.</p>
+        <div id="summary-stats" class="grid stats-grid"></div>
+      </section>
+
+      <div class="grid two-column">
+        <section class="panel">
+          <h2>Daily Requests</h2>
+          <p class="panel-copy">Request count over the last 30 days.</p>
+          <div id="daily-usage" class="chart"></div>
+        </section>
+
+        <section class="panel">
+          <h2>By Endpoint</h2>
+          <p class="panel-copy">Which operations are driving usage and failures.</p>
+          <div id="endpoint-usage" class="chart"></div>
+        </section>
+      </div>
+
+      <div class="grid two-column">
+        <section class="panel">
+          <h2>Recent Errors</h2>
+          <p class="panel-copy">Most recent failed requests with endpoint context.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>When</th>
+                <th>Endpoint</th>
+                <th>Error</th>
+              </tr>
+            </thead>
+            <tbody id="recent-errors"></tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h2>Admin Alerts</h2>
+          <p class="panel-copy">Rows created by the spend monitor and other admin tooling.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Severity</th>
+                <th>Title</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody id="alerts"></tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="/routine-ops/admin.js"></script>
+  <script>
+    const statusEl = document.getElementById("status");
+    const contentEl = document.getElementById("content");
+    document.getElementById("logout-button").addEventListener("click", () => window.RoutineOps.logout());
+
+    async function load() {
+      await window.RoutineOps.requireSession();
+
+      try {
+        const data = await window.RoutineOps.requestJson("/.netlify/functions/api-usage");
+        window.RoutineOps.renderStats(document.getElementById("summary-stats"), [
+          { label: "Requests", value: window.RoutineOps.formatNumber(data.summary.totalRequests) },
+          { label: "Success Rate", value: window.RoutineOps.formatPercent(data.summary.successRate) },
+          { label: "Total Cost", value: window.RoutineOps.formatCurrency(data.summary.totalCostUsd) },
+          { label: "Tokens", value: window.RoutineOps.formatNumber(data.summary.totalTokens) },
+          { label: "Failed", value: window.RoutineOps.formatNumber(data.summary.failedRequests) },
+          { label: "Unique Users", value: window.RoutineOps.formatNumber(data.summary.uniqueUsers) },
+        ]);
+
+        window.RoutineOps.renderBarChart(
+          document.getElementById("daily-usage"),
+          data.dailyUsage.slice(-10).map((entry) => ({
+            label: entry.date,
+            value: entry.requestCount,
+          })),
+          window.RoutineOps.formatNumber
+        );
+
+        window.RoutineOps.renderBarChart(
+          document.getElementById("endpoint-usage"),
+          data.endpointUsage.slice(0, 8).map((entry) => ({
+            label: `${entry.endpoint}${entry.failedCount ? " (!)" : ""}`,
+            value: entry.requestCount,
+          })),
+          window.RoutineOps.formatNumber
+        );
+
+        const errorsTarget = document.getElementById("recent-errors");
+        errorsTarget.innerHTML = data.recentErrors.length
+          ? data.recentErrors
+              .map(
+                (entry) => `
+                  <tr>
+                    <td>${window.RoutineOps.escapeHtml(window.RoutineOps.formatDateTime(entry.createdAt))}</td>
+                    <td>${window.RoutineOps.escapeHtml(entry.endpoint)}</td>
+                    <td>${window.RoutineOps.escapeHtml(entry.errorMessage)}</td>
+                  </tr>
+                `
+              )
+              .join("")
+          : '<tr><td colspan="3" class="muted">No recent errors.</td></tr>';
+
+        const alertsTarget = document.getElementById("alerts");
+        alertsTarget.innerHTML = data.alerts.length
+          ? data.alerts
+              .map(
+                (entry) => `
+                  <tr>
+                    <td><span class="pill ${entry.severity === "critical" ? "danger" : entry.severity === "warning" ? "warning" : "success"}">${window.RoutineOps.escapeHtml(entry.severity)}</span></td>
+                    <td>
+                      <div>${window.RoutineOps.escapeHtml(entry.title)}</div>
+                      <div class="muted" style="margin-top:6px;">${window.RoutineOps.escapeHtml(entry.message)}</div>
+                    </td>
+                    <td>${window.RoutineOps.escapeHtml(window.RoutineOps.formatDateTime(entry.created_at))}</td>
+                  </tr>
+                `
+              )
+              .join("")
+          : '<tr><td colspan="3" class="muted">No alerts yet.</td></tr>';
+
+        statusEl.classList.add("hidden");
+        contentEl.classList.remove("hidden");
+      } catch (error) {
+        statusEl.textContent = error.message;
+        statusEl.className = "status error";
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
