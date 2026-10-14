@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /routine/thanks.html
+
+Sitemap: https://btfappdev.com/sitemap.xml
