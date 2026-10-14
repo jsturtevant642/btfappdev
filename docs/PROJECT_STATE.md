@@ -1,6 +1,6 @@
 # BTFAPPDEV project state
 
-Updated: 2026-09-19
+Updated: 2026-10-14
 
 ## ROUTINE marketing site
 
@@ -8,6 +8,7 @@ Updated: 2026-09-19
 - GitHub auto-build is still broken (repo clone host-key failure), so production publishes through the Netlify CLI from a `git archive` of HEAD.
 - `routine/release.js` sets `APP_STORE_URL` to `https://apps.apple.com/us/app/routine-ai-fitness-coach/id6759007085`. That script shows the official Apple badge, points all three download actions at that URL, and hides the launch waitlist.
 - Pricing sits between the screenshot row and the download CTA: Free at $0 with two plan adjustments a month; ROUTINE Pro at $8.99/month or $69.99/year.
+- `robots.txt` and `sitemap.xml` are live at the site root (deployed 2026-10-14, commit `cc9b687`). The sitemap lists the homepage and the public ROUTINE pages; robots.txt disallows `/routine/thanks.html`. Add new public pages to the sitemap when they ship.
 
 ## ROUTINE ops console
 
