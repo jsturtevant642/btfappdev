@@ -5,17 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="BTF Digital Labs builds thoughtful software products for health, storytelling, and career growth."
+      content="Building The Future Digital Labs builds thoughtful software products for health, storytelling, and career growth."
     />
-    <title>BTF Digital Labs | Product Studio</title>
+    <title>Building The Future Digital Labs | Product Studio</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,560;8..60,650&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/assets/styles.css" />
   </head>
   <body>
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="/">
-          <span class="brand-mark">BTF</span>
-          <span>BTF Digital Labs</span>
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <rect x="2" y="13.5" width="5" height="8" rx="1.2"></rect>
+              <rect x="9.5" y="8.5" width="5" height="13" rx="1.2"></rect>
+              <rect x="17" y="3.5" width="5" height="18" rx="1.2"></rect>
+            </svg>
+          </span>
+          <span class="brand-lockup">
+            <span class="brand-name">Building The Future</span>
+            <span class="brand-sub">Digital Labs</span>
+          </span>
         </a>
         <div class="nav-links">
           <div class="nav-dropdown">
@@ -40,7 +56,7 @@
             <p class="kicker">Independent product studio</p>
             <h1>Useful software for the moments that shape people.</h1>
             <p class="lead">
-              BTF Digital Labs designs and builds products for fitness, career
+              Building The Future Digital Labs designs and builds products for fitness, career
               growth, storytelling, and the personal systems people rely on to
               move forward.
             </p>
@@ -50,7 +66,7 @@
             </div>
           </div>
 
-          <aside class="studio-card" aria-label="BTF product focus areas">
+          <aside class="studio-card" aria-label="Product focus areas">
             <div class="studio-card-inner">
               <p class="eyebrow">Now Building</p>
               <h3>Four focused products, one shared standard.</h3>
@@ -104,7 +120,7 @@
           </div>
 
           <div class="product-grid">
-            <a class="product-card" href="/routine/">
+            <a class="product-card" data-product="routine" href="/routine/">
               <div class="product-card-media">
                 <div class="mini-screen" aria-hidden="true">
                   <span class="mini-line short"></span>
@@ -124,7 +140,7 @@
               </div>
             </a>
 
-            <a class="product-card" href="/jrny/">
+            <a class="product-card" data-product="jrny" href="/jrny/">
               <div class="product-card-media">
                 <div class="mini-screen" aria-hidden="true">
                   <span class="mini-line medium"></span>
@@ -144,7 +160,7 @@
               </div>
             </a>
 
-            <a class="product-card" href="/myproxy/">
+            <a class="product-card" data-product="myproxy" href="/myproxy/">
               <div class="product-card-media">
                 <div class="mini-screen" aria-hidden="true">
                   <span class="mini-block"></span>
@@ -164,7 +180,7 @@
               </div>
             </a>
 
-            <a class="product-card" href="/remix-career/">
+            <a class="product-card" data-product="remix" href="/remix-career/">
               <div class="product-card-media">
                 <div class="mini-screen" aria-hidden="true">
                   <span class="mini-line short"></span>
@@ -234,10 +250,10 @@
 
     <footer class="site-footer">
       <div class="footer-inner">
-        <p>&copy; BTF Digital Labs LLC</p>
+        <p>&copy; Building The Future Digital Labs LLC</p>
         <div class="footer-links">
-          <a href="/routine/privacy-policy.html">Routine Privacy</a>
-          <a href="/routine/terms-of-service.html">Routine Terms</a>
+          <a href="/routine/privacy-policy.html">ROUTINE Privacy</a>
+          <a href="/routine/terms-of-service.html">ROUTINE Terms</a>
           <a href="mailto:connect@btfappdev.com">connect@btfappdev.com</a>
         </div>
       </div>
