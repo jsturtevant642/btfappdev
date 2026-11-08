@@ -1,0 +1,12 @@
+# Moved: MyProxy is now Proxie
+/myproxy        /proxie/  301
+/myproxy/       /proxie/  301
+/myproxy/*      /proxie/  301
+
+# Internal files are not served (force: these paths exist on disk because publish = ".")
+/docs/*           /404.html  404!
+/package.json     /404.html  404!
+/package-lock.json /404.html 404!
+/node_modules/*   /404.html  404!
+/netlify/*        /404.html  404!
+/netlify.toml     /404.html  404!

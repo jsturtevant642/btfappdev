@@ -3,250 +3,142 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Building The Future Digital Labs builds thoughtful software products for health, storytelling, and career growth."
-    />
     <title>Building The Future Digital Labs | Product Studio</title>
+    <meta name="description" content="Building The Future Digital Labs is an independent product studio. Five products across fitness, career strategy, marketing systems, storytelling and career representation." />
+    <link rel="canonical" href="https://btfappdev.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Building The Future Digital Labs" />
+    <meta property="og:title" content="Building The Future Digital Labs | Product Studio" />
+    <meta property="og:description" content="Building The Future Digital Labs is an independent product studio. Five products across fitness, career strategy, marketing systems, storytelling and career representation." />
+    <meta property="og:url" content="https://btfappdev.com/" />
+    <meta property="og:image" content="https://btfappdev.com/assets/og/home.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ROUTINE app screens on a blue background" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#F3F5F8" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,560;8..60,650&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/styles.css" />
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="/">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <rect x="2" y="13.5" width="5" height="8" rx="1.2"></rect>
-              <rect x="9.5" y="8.5" width="5" height="13" rx="1.2"></rect>
-              <rect x="17" y="3.5" width="5" height="18" rx="1.2"></rect>
-            </svg>
-          </span>
-          <span class="brand-lockup">
-            <span class="brand-name">Building The Future</span>
-            <span class="brand-sub">Digital Labs</span>
-          </span>
-        </a>
+        <a class="brand" href="/"><span class="brand-lockup"><span class="brand-name">Building The Future</span> <span class="brand-sub">Digital Labs</span></span></a>
         <div class="nav-links">
-          <div class="nav-dropdown">
-            <button class="dropdown-toggle" type="button" aria-haspopup="true">Work</button>
-            <div class="dropdown-menu" aria-label="Work pages">
-              <a href="/routine/">ROUTINE</a>
-              <a href="/jrny/">JRNY</a>
-              <a href="/myproxy/">MyProxy</a>
-              <a href="/remix-career/">Remix Career</a>
-            </div>
-          </div>
-          <a href="#approach">Approach</a>
+          <a href="/#work">Work</a>
+          <a href="/#approach">Approach</a>
           <a href="mailto:connect@btfappdev.com">Contact</a>
         </div>
       </nav>
     </header>
-
-    <main>
-      <section class="hero">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="kicker">Independent product studio</p>
-            <h1>Useful software for the moments that shape people.</h1>
-            <p class="lead">
-              Building The Future Digital Labs designs and builds products for fitness, career
-              growth, storytelling, and the personal systems people rely on to
-              move forward.
-            </p>
-            <div class="cta-row">
-              <a class="button" href="#products">Explore products</a>
-              <a class="button secondary" href="mailto:connect@btfappdev.com">Work with us</a>
-            </div>
-          </div>
-
-          <aside class="studio-card" aria-label="Product focus areas">
-            <div class="studio-card-inner">
-              <p class="eyebrow">Now Building</p>
-              <h3>Four focused products, one shared standard.</h3>
-              <div class="signal-list">
-                <div class="signal">
-                  <span class="signal-mark"></span>
-                  <div>
-                    <strong>ROUTINE</strong>
-                    <span>Adaptive training plans built around real life.</span>
-                  </div>
-                </div>
-                <div class="signal">
-                  <span class="signal-mark"></span>
-                  <div>
-                    <strong>JRNY</strong>
-                    <span>A storytelling space for memory, meaning, and momentum.</span>
-                  </div>
-                </div>
-                <div class="signal">
-                  <span class="signal-mark"></span>
-                  <div>
-                    <strong>MyProxy</strong>
-                    <span>A career advocate that represents your experience clearly.</span>
-                  </div>
-                </div>
-                <div class="signal">
-                  <span class="signal-mark"></span>
-                  <div>
-                    <strong>Remix Career</strong>
-                    <span>A sister venture for better-fit career strategy.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
+    <main id="main">
+      <section class="wrap hero">
+        <p class="kicker">Independent product studio</p>
+        <h1 class="h1">Useful software for the moments that shape people.</h1>
+        <p class="sub">Five products across fitness, career strategy, marketing systems, audio storytelling and how professionals represent their work. Each one designed, built and shipped with AI agents as the engineering team.</p>
+        <nav class="index" aria-label="Products">
+          <a href="#routine" style="--a:#0276AF"><b><img class="tile-logo" src="/routine/assets/icon-512.png" alt="" width="512" height="512">ROUTINE</b><span>Adaptive fitness</span><i class="pill live">Live</i></a>
+          <a href="#remix" style="--a:#2F5D46"><b>Remix Career</b><span>Career strategy</span><i class="pill live">Live</i></a>
+          <a href="#vfk" style="--a:#5B45A8"><b>Venture Factory</b><span>Marketing systems</span><i class="pill build">In build</i></a>
+          <a href="#jrny" style="--a:#9C3F66"><b>JRNY</b><span>Audio storytelling</span><i class="pill dev">Prototype</i></a>
+          <a href="#proxie" style="--a:#0A7C86"><b>Proxie</b><span>Career representation</span><i class="pill dev">In development</i></a>
+        </nav>
       </section>
 
-      <section id="products" class="section dark-panel">
-        <div class="container">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Work</p>
-              <h2>Built around specific human problems.</h2>
-            </div>
-            <p class="copy">
-              Each project starts with a lived workflow: how people train,
-              explain themselves, preserve their stories, make their next career
-              move, and make better decisions with less friction.
-            </p>
+      <section id="work" class="wrap work" style="margin-top:clamp(40px,6vw,72px)" aria-label="Work">
+        <article class="proj" id="routine" style="--a:#0276AF;--stage:#DDEEF8;--stage2:#C7E2F3">
+          <div class="text">
+            <p class="eyebrow">Adaptive fitness <i class="pill live">Live on the App Store</i></p>
+            <h3 class="name"><img class="name-logo" src="/routine/assets/icon-512.png" alt="" width="512" height="512">ROUTINE</h3>
+            <p class="lead">An AI fitness coach for iPhone. It builds a plan from your goals, schedule and equipment, then adjusts it as you train.</p>
+            <dl class="spec"><div><dt>175</dt><dd>App Store territories</dd></div><div><dt>600</dt><dd>exercises in the catalog</dd></div><div><dt>$8.99</dt><dd>ROUTINE Pro per month</dd></div></dl>
+            <ul class="hl"><li>Elastic Progression: the plan reconfigures automatically around missed sessions. When you complete everything as planned, AI raises the difficulty by small but challenging degrees.</li><li>Each exercise opens on a looping 3D demo, with a form guide listing the muscles worked and numbered steps.</li><li>ROUTINE Pro reviews what you logged each week and proposes updated targets, which you accept or skip.</li></ul>
+            <p class="stack">React Native (Expo) · Supabase · OpenAI · RevenueCat · Mixpanel</p>
+            <div class="cta-row"><a class="cta" href="/routine/">See ROUTINE <span aria-hidden="true">→</span></a></div>
           </div>
+          <div class="stage"><div class="phones"><figure class="phone side"><img src="/assets/portfolio/routine/01-home.webp" width="640" height="1385" alt="ROUTINE home screen with today's workout, a Start workout button and the week at a glance" loading="lazy" decoding="async"></figure><figure class="phone mid"><img src="/assets/portfolio/routine/05-active-workout.webp" width="640" height="1385" alt="An active workout: a 3D bench press demo above the set log" loading="lazy" decoding="async"></figure><figure class="phone side r"><img src="/assets/portfolio/routine/07-progress.webp" width="640" height="1385" alt="Progress screen with weekly stats, a progress timeline and a new personal best" loading="lazy" decoding="async"></figure></div></div>
+        </article>
 
-          <div class="product-grid">
-            <a class="product-card" data-product="routine" href="/routine/">
-              <div class="product-card-media product-card-media-icon">
-                <img class="product-card-icon" src="/routine/assets/icon-512.png" alt="" width="104" height="104" />
-              </div>
-              <div class="product-card-body">
-                <span class="product-meta">Adaptive fitness</span>
-                <h3>ROUTINE</h3>
-                <p>
-                  Workout planning that adjusts to your goals, constraints,
-                  progress, and the feedback you give mid-session.
-                </p>
-                <span class="product-link">View product</span>
-              </div>
-            </a>
-
-            <a class="product-card" data-product="jrny" href="/jrny/">
-              <div class="product-card-media">
-                <div class="mini-screen" aria-hidden="true">
-                  <span class="mini-line medium"></span>
-                  <span class="mini-line long"></span>
-                  <span class="mini-block"></span>
-                  <span class="mini-line short"></span>
-                </div>
-              </div>
-              <div class="product-card-body">
-                <span class="product-meta">Personal storytelling</span>
-                <h3>JRNY</h3>
-                <p>
-                  A guided storytelling app for capturing personal chapters,
-                  turning memories into narratives, and sharing them with care.
-                </p>
-                <span class="product-link">View product</span>
-              </div>
-            </a>
-
-            <a class="product-card" data-product="myproxy" href="/myproxy/">
-              <div class="product-card-media">
-                <div class="mini-screen" aria-hidden="true">
-                  <span class="mini-block"></span>
-                  <span class="mini-line long"></span>
-                  <span class="mini-line medium"></span>
-                  <span class="mini-line short"></span>
-                </div>
-              </div>
-              <div class="product-card-body">
-                <span class="product-meta">Career representation</span>
-                <h3>MyProxy</h3>
-                <p>
-                  A better way to translate your background, strengths, and
-                  career story into what hiring managers need to understand.
-                </p>
-                <span class="product-link">View product</span>
-              </div>
-            </a>
-
-            <a class="product-card" data-product="remix" href="/remix-career/">
-              <div class="product-card-media">
-                <div class="mini-screen" aria-hidden="true">
-                  <span class="mini-line short"></span>
-                  <span class="mini-line long"></span>
-                  <span class="mini-line medium"></span>
-                  <span class="mini-block"></span>
-                </div>
-              </div>
-              <div class="product-card-body">
-                <span class="product-meta">Career strategy</span>
-                <h3>Remix Career</h3>
-                <p>
-                  A sister venture that turns your patterns, skills, and
-                  experience into a practical strategy for a better-fit next move.
-                </p>
-                <span class="product-link">View project</span>
-              </div>
-            </a>
+        <article class="proj flip" id="remix" style="--a:#2F5D46;--stage:#E2ECE3;--stage2:#CFE0D2">
+          <div class="text">
+            <p class="eyebrow">Career strategy · sister venture <i class="pill live">Live</i></p>
+            <h3 class="name">Remix Career</h3>
+            <p class="lead">Turns executive coach Steven Miyao's methodology into AI-amplified career strategy and job application tools for mid-career professionals.</p>
+            <dl class="spec"><div><dt>15</dt><dd>reflective questions</dd></div><div><dt>8</dt><dd>AI modules in sequence</dd></div><div><dt>16</dt><dd>career archetypes</dd></div></dl>
+            <ul class="hl"><li>Deterministic scoring matches six behavioral dimensions to 16 career archetypes, so results stay consistent.</li><li>Career remixes suggest unconventional uses for transferable skills a person may never have considered.</li><li>Launched publicly in late April 2026 and had its first paying customer within three weeks.</li></ul>
+            <p class="stack">Remix (Vite) · Supabase · Stripe · OpenAI · Sentry · Wix (marketing site)</p>
+            <div class="cta-row"><a class="cta" href="https://app.remixcareer.com/sample-report/overview" target="_blank" rel="noopener">Read the sample report <span aria-hidden="true">→</span></a><a class="cta" href="/remix-career/">More on Remix Career <span aria-hidden="true">→</span></a></div>
           </div>
-        </div>
+          <div class="stage"><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/remix-career/report-archetype-profile.webp" width="1600" height="1000" alt="The archetype profile in the public sample report" loading="lazy" decoding="async"></figure><div class="web-row"><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/remix-career/report-overview.webp" width="1600" height="1000" alt="The sample report overview, organized as Insights, Strategy and Execution" loading="lazy" decoding="async"></figure><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/remix-career/site-home.webp" width="1600" height="1000" alt="The remixcareer.com home page" loading="lazy" decoding="async"></figure></div></div>
+        </article>
+
+        <article class="proj" id="vfk" style="--a:#5B45A8;--stage:#ECE8FA;--stage2:#DED7F5">
+          <div class="text">
+            <p class="eyebrow">Marketing systems <i class="pill build">In build</i></p>
+            <h3 class="name">Venture Factory</h3>
+            <p class="lead">One marketing engine that runs several ventures. It plans, drafts, scouts and reports, and a person approves everything before it goes out.</p>
+            <dl class="spec"><div><dt>3</dt><dd>ventures on one engine</dd></div><div><dt>4</dt><dd>social channels it publishes to</dd></div><div><dt>0</dt><dd>posts without approval</dd></div></dl>
+            <ul class="hl"><li>The content engine drafts answer-first blog posts structured for search and AI citation, then cascades each one into LinkedIn, X, Instagram, Facebook and email versions, carousel slides included.</li><li>Daily engagement scouting finds real conversations worth joining, drafts replies in the brand's voice and recommends accounts to follow.</li><li>Every Monday a pulse delivers headline stats to act on, then more detailed, actionable insights.</li></ul>
+            <p class="stack">Claude Cowork plugins · Python · GA4 · Search Console · Mixpanel · Google Drive</p>
+            <div class="cta-row"><a class="cta" href="/venture-factory/">How Venture Factory works <span aria-hidden="true">→</span></a></div>
+          </div>
+          <div class="stage"><img src="/assets/portfolio/venture-factory/weekly-loop.webp" width="1600" height="640" alt="Diagram of the weekly loop: brand pack and manifest, Monday pulse, planner, agent drafts, human approval, publishing, and analytics feeding the next pulse" loading="lazy" decoding="async" class="flat"><div class="web-row"><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/venture-factory/setup-status.webp" width="1600" height="840" alt="The venture setup status board for ROUTINE: 34 green, 4 yellow, 0 red, with each area of the brand pack, channels, sources and schedules" loading="lazy" decoding="async"></figure><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/venture-factory/weekly-plan.webp" width="1600" height="900" alt="A weekly content plan for ROUTINE: the gate check, one recommendation, three review asks and a hard-rule compliance check" loading="lazy" decoding="async"></figure></div></div>
+        </article>
+
+        <article class="proj flip" id="jrny" style="--a:#9C3F66;--stage:#F6E7EE;--stage2:#EDD3DF">
+          <div class="text">
+            <p class="eyebrow">Audio storytelling <i class="pill dev">Working prototype</i></p>
+            <h3 class="name">JRNY</h3>
+            <p class="lead">An AI audio storytelling app for drives, walks and other in-between moments. A listener picks a mood, a kind of story and how much time they have, and JRNY delivers a narrated story written by AI and voiced with synthetic narration.</p>
+            
+            <ul class="hl"><li>Builds a story around the moment: pick a mood, a genre and the kind of energy you want, from calm to adventure.</li><li>Fits the time you have, with stories sized for a short walk, a commute or a long drive (5, 15 or 30 minutes).</li><li>AI writes each story and a synthetic narrator voices it, with read-along text that scrolls as you listen.</li></ul>
+            
+            <div class="cta-row"><a class="cta" href="/jrny/">Get notified <span aria-hidden="true">→</span></a></div>
+          </div>
+          <div class="stage"><img class="flat" src="/assets/portfolio/jrny/jrny-story-builder.webp" alt="How a JRNY story gets made: pick a mood, a kind of story and the time you have, and get a story written by AI and voiced by a synthetic narrator" width="1600" height="520" loading="lazy" decoding="async"></div>
+        </article>
+
+        <article class="proj" id="proxie" style="--a:#0A7C86;--stage:#DDF0F0;--stage2:#C8E6E7">
+          <div class="text">
+            <p class="eyebrow">Career representation <i class="pill dev">In development</i></p>
+            <h3 class="name">Proxie</h3>
+            <p class="lead">An AI representative a professional shares by link. It answers a recruiter's questions in the third person, only from material they have approved.</p>
+            <dl class="spec"><div><dt>3</dt><dd>access tiers</dd></div><div><dt>2</dt><dd>ways to answer: by role, by skill</dd></div><div><dt>1</dt><dd>profile, written once</dd></div></dl>
+            <ul class="hl"><li>Each access code belongs to one recipient, so the candidate sees who engaged, what they asked and how deeply they explored.</li><li>Every claim traces back to a source, and the person's own reflections appear as direct quotes.</li></ul>
+            
+            <div class="cta-row"><a class="cta" href="/proxie/">How Proxie works <span aria-hidden="true">→</span></a></div>
+          </div>
+          <div class="stage tiers"><div class="tier t1"><b>Public</b><span>Anyone with the link gets a substantive overview</span></div><div class="tier t2"><b>Deep</b><span>Projects, behavioral answers and quotes, with a personal code</span></div><div class="tier t3"><b>Private</b><span>Never surfaced to anyone</span></div></div>
+        </article>
       </section>
 
-      <section id="approach" class="section">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">How we build</p>
-            <h2>Quietly capable beats loudly futuristic.</h2>
+      <section id="approach" class="wrap section">
+        <div class="approach">
+          <div class="section-head">
+            <p class="eyebrow-plain kicker">How we build</p>
+            <h2 class="h2">Quietly capable beats loudly futuristic.</h2>
           </div>
-          <div class="signal-list">
-            <div class="signal">
-              <span class="signal-mark"></span>
-              <div>
-                <strong>Plain-language product thinking</strong>
-                <span>Clear value, clear audience, clear reason to exist.</span>
-              </div>
-            </div>
-            <div class="signal">
-              <span class="signal-mark"></span>
-              <div>
-                <strong>Software that respects context</strong>
-                <span>Products should adapt to people, not force people into rigid systems.</span>
-              </div>
-            </div>
-            <div class="signal">
-              <span class="signal-mark"></span>
-              <div>
-                <strong>Design with restraint</strong>
-                <span>Useful interfaces, durable patterns, and enough personality to feel owned.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact">
-        <div class="container">
-          <div class="quote-card">
-            <p>
-              We are building a portfolio of products that help people train
-              smarter, tell better stories, and represent themselves with more
-              confidence.
-            </p>
+          <div class="points">
+            <div><b>Plain-language product thinking</b><span>Clear value, clear audience, clear reason to exist.</span></div>
+            <div><b>Software that respects context</b><span>Products should adapt to people, not force people into rigid systems.</span></div>
+            <div><b>Design with restraint</b><span>Useful interfaces, durable patterns, and enough personality to feel owned.</span></div>
           </div>
         </div>
       </section>
     </main>
-
     <footer class="site-footer">
       <div class="footer-inner">
         <p>&copy; Building The Future Digital Labs LLC</p>
         <div class="footer-links">
+          <a href="/routine/">ROUTINE</a>
+          <a href="/remix-career/">Remix Career</a>
+          <a href="/venture-factory/">Venture Factory</a>
+          <a href="/jrny/">JRNY</a>
+          <a href="/proxie/">Proxie</a>
           <a href="/routine/privacy-policy.html">ROUTINE Privacy</a>
           <a href="/routine/terms-of-service.html">ROUTINE Terms</a>
           <a href="mailto:connect@btfappdev.com">connect@btfappdev.com</a>
