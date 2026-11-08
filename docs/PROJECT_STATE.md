@@ -1,6 +1,6 @@
 # BTFAPPDEV project state
 
-Updated: 2026-11-02
+Updated: 2026-11-08
 
 ## ROUTINE marketing site
 
@@ -21,3 +21,14 @@ Updated: 2026-11-02
 
 - Task: https://app.asana.com/1/1213084996813326/project/1213085019788825/task/1218424156161375
 - See `ROUTINE_LAUNCH_HANDOFF.md` for the original release procedure.
+
+## Portfolio redesign (Nov 2026)
+
+Branch `portfolio-refresh-2026-11` (worktree `../BTFAPPDEV-portfolio`). Not merged, not published.
+
+- **Design system:** `assets/styles.css` replaces the old stylesheet (design direction v2, light only). Canvas `#F3F5F8`, surface `#FFFFFF`, ink `#0D1626`. Bricolage Grotesque 800 for display, Source Sans 3 for body, IBM Plex Mono for labels. Each product has an accent and a stage gradient, set as CSS variables (`--a`, `--stage`, `--stage2`) on its block. `/routine/` and `/routine-ops/` keep their own stylesheets.
+- **Pages:** `/` (hero, product index, five product blocks, How we build), `/remix-career/`, `/venture-factory/`, `/jrny/`, `/proxie/`, `/thanks/`, `/404.html`. `/myproxy/` was removed and 301s to `/proxie/` in `_redirects`. Phones sit in a flex row sized by the stage width, so a stage cannot overlap the next block.
+- **Internal files:** `_redirects` forces 404 for `/docs/*`, `/package.json`, `/package-lock.json`, `/node_modules/*`, `/netlify/*` and `/netlify.toml`.
+- **Images and copy:** copy and alt text come from `/Users/joshuasturtevant/dev/proxie-profile` (`projects.yaml` entries `routine`, `remix-career`, `venture-factory`, `jrny`, `proxie`). Images are copies of `proxie-profile/media/` at `assets/portfolio/<project>/` as WebP (phones 640px wide, browser shots 1600px). Open Graph images are JPEGs in `assets/og/`. Do not edit proxie-profile from this repo.
+- **Waitlist forms:** JRNY, Proxie and Remix Career post to `netlify/functions/waitlist.js`. The Proxie form sends `product=Proxie`, which the function stores as given (its label map still lists MyProxy). Earlier MyProxy signups keep the old label.
+- **Merge and publish:** production publishes through the Netlify CLI from a `git archive` of the main checkout's HEAD (the ROUTINE autopilot does the same). Merging this branch into `main` therefore puts it in the next publish, so merge only when Josh approves publishing. Steps: review the Netlify draft, `git merge --no-ff portfolio-refresh-2026-11` in `/Users/joshuasturtevant/dev/BTFAPPDEV` on `main`, then publish with the repo's usual production command, then check `/`, `/proxie/`, `/myproxy/` (301), `/docs/PROJECT_STATE.md` (404), `/routine/` and the legal pages. Afterwards `git worktree remove ../BTFAPPDEV-portfolio`.
