@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JRNY | Building The Future Digital Labs</title>
-    <meta name="description" content="JRNY is a guided storytelling app that helps people capture memories, organize them into chapters and shape them into stories they keep or share." />
+    <meta name="description" content="JRNY is an AI audio storytelling app: pick a mood, a kind of story and how much time you have, and get a narrated story written for that moment." />
     <link rel="canonical" href="https://btfappdev.com/jrny/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Building The Future Digital Labs" />
     <meta property="og:title" content="JRNY | Building The Future Digital Labs" />
-    <meta property="og:description" content="JRNY is a guided storytelling app that helps people capture memories, organize them into chapters and shape them into stories they keep or share." />
+    <meta property="og:description" content="JRNY is an AI audio storytelling app: pick a mood, a kind of story and how much time you have, and get a narrated story written for that moment." />
     <meta property="og:url" content="https://btfappdev.com/jrny/" />
     <meta property="og:image" content="https://btfappdev.com/assets/og/home.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -39,19 +39,20 @@
       <section class="wrap hero" style="--a:#9C3F66;--stage:#F6E7EE;--stage2:#EDD3DF">
         <div class="proj" style="padding-top:12px">
           <div class="text">
-            <p class="eyebrow">Storytelling <i class="pill dev">In development</i></p>
+            <p class="eyebrow">Audio storytelling <i class="pill dev">Working prototype</i></p>
             <h1 class="name">JRNY</h1>
-            <p class="lead" style="max-width:56ch">A guided storytelling app that helps people capture memories, organize them into chapters and shape them into stories they keep or share. It starts from a single memory, theme or prompt, so nobody faces a blank page.</p>
+            <p class="lead" style="max-width:56ch">An AI audio storytelling app for drives, walks and other in-between moments. A listener picks a mood, a kind of story and how much time they have, and JRNY delivers a narrated story written by AI and voiced with synthetic narration.</p>
             
             <div class="cta-row"></div>
           </div>
-          <div class="stage type"><p class="quote">A place to turn life into story.</p><p class="chapters"><span>Chapter 1 · The move</span><span>Chapter 2 · First job</span><span>Chapter 3 · Turning points</span></p></div>
+          <div class="stage"><img class="flat" src="/assets/portfolio/jrny/jrny-story-builder.webp" alt="How a JRNY story gets made: pick a mood, a kind of story and the time you have, and get a story written by AI and voiced by a synthetic narrator" width="1600" height="520" loading="lazy" decoding="async"></div>
         </div>
       </section>
 
       <section class="wrap section" style="--a:#9C3F66;--stage:#F6E7EE;--stage2:#EDD3DF">
         <div class="section-head"><p class="eyebrow">What it does</p></div>
-        <div class="two-col"><ul class="hl"><li>Starts from a memory, a theme or a prompt, so the first step is never a blank page.</li><li>Stories grow chapter by chapter through small additions, organized around people, places, lessons and turning points.</li><li>Guided prompts help a person find the next sentence without taking over their voice.</li><li>Each story is shared on the owner's terms: kept private, or shared with family, a community or a wider audience.</li></ul></div>
+        <div class="two-col"><ul class="hl"><li>Builds a story around the moment: pick a mood, a genre and the kind of energy you want, from calm to adventure.</li><li>Fits the time you have, with stories sized for a short walk, a commute or a long drive (5, 15 or 30 minutes).</li><li>AI writes each story and a synthetic narrator voices it, with read-along text that scrolls as you listen.</li><li>A built-in studio lets an editor tune prompts, generate and review stories, choose narrator voices and batch-produce audio before anything is published.</li></ul></div>
+        <p class="stack">Built with React Native (Expo) · Supabase · OpenAI · ElevenLabs</p>
         
       </section>
 
@@ -59,7 +60,7 @@
         <div class="notify">
           <div>
             <h2 class="h2">Get notified when JRNY becomes available.</h2>
-            <p>JRNY is in development. Enter your email address and we will let you know when it is ready.</p>
+            <p>JRNY is a working prototype. Enter your email address and we will let you know when it is ready.</p>
           </div>
           <form name="jrny-waitlist" method="POST" action="/.netlify/functions/waitlist" data-netlify="true" netlify-honeypot="bot-field" class="capture-form">
             <input type="hidden" name="form-name" value="jrny-waitlist" />
