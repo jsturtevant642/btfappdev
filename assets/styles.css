@@ -539,6 +539,20 @@ h3 {
   padding: 1.1rem;
 }
 
+.product-card-media-icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.product-card-icon {
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(2, 118, 175, 0.35);
+  display: block;
+  height: 104px;
+  width: 104px;
+}
+
 .product-card-body {
   display: flex;
   flex-direction: column;
