@@ -1,6 +1,6 @@
 # BTFAPPDEV project state
 
-Updated: 2026-11-08
+Updated: 2026-11-19
 
 ## ROUTINE marketing site
 
@@ -32,3 +32,17 @@ Branch `portfolio-refresh-2026-11` (worktree `../BTFAPPDEV-portfolio`). Not merg
 - **Images and copy:** copy and alt text come from `/Users/joshuasturtevant/dev/proxie-profile` (`projects.yaml` entries `routine`, `remix-career`, `venture-factory`, `jrny`, `proxie`). Images are copies of `proxie-profile/media/` at `assets/portfolio/<project>/` as WebP (phones 640px wide, browser shots 1600px). Open Graph images are JPEGs in `assets/og/`. Do not edit proxie-profile from this repo.
 - **Waitlist forms:** JRNY, Proxie and Remix Career post to `netlify/functions/waitlist.js`. The Proxie form sends `product=Proxie`, which the function stores as given (its label map still lists MyProxy). Earlier MyProxy signups keep the old label.
 - **Merge and publish:** production publishes through the Netlify CLI from a `git archive` of the main checkout's HEAD (the ROUTINE autopilot does the same). Merging this branch into `main` therefore puts it in the next publish, so merge only when Josh approves publishing. Steps: review the Netlify draft, `git merge --no-ff portfolio-refresh-2026-11` in `/Users/joshuasturtevant/dev/BTFAPPDEV` on `main`, then publish with the repo's usual production command, then check `/`, `/proxie/`, `/myproxy/` (301), `/docs/PROJECT_STATE.md` (404), `/routine/` and the legal pages. Afterwards `git worktree remove ../BTFAPPDEV-portfolio`.
+
+## Polish pass (2026-11-19)
+
+Branch `site-polish-2026-11` (worktree `../BTFAPPDEV-polish`), built by Cowork from Josh's Nov 19 notes.
+
+- **Home hero:** dark band (`.site-header.dark` + `.top`) with a collage of one real screen per product (`.collage`, sized in container units so it scales as one piece). Each collage item links to its block. Product tiles sit at the bottom of the band.
+- **Sticky product rail:** `#rail` appears after the hero and marks the product in view. The inline script at the end of `index.html` drives the rail and the scroll reveal (`.rv`), which only applies to blocks below the first screen and is skipped for reduced-motion users. The page works without the script.
+- **Remix Career:** screenshots are now fresh captures of the remixcareer.com marketing site (`assets/portfolio/remix-career/mk-*.webp`, 16:10, captured 2026-11-19 at 2x), plus one sample-report shot. The older `site-*` and `report-*` images were removed.
+- **Proxie:** block and page rewritten from `~/dev/Proxie/briefs/proxie-portfolio-entry-brief-2026-11-19.md` in product voice: one Person Model feeding every surface, with each piece marked Live, In use, Designed or Planned. The Person Model diagram is HTML (`.pm`). `assets/portfolio/proxie/galaxy.webp` is the public top level of the galaxy on joshsturtevant.netlify.app, captured with the page text hidden. Concierge is not on this site: the brief leaves that decision to Josh and recommends keeping it behind an access code. Do not add it without his say.
+- **JRNY:** the stage is now HTML (`.stage.jr`): mood, kind of story and time chips beside a player card. The image it replaced was removed.
+- **Navigation:** product pages carry a product sub-nav (`.subnav`). All five product URLs are unchanged (`/routine/`, `/remix-career/`, `/venture-factory/`, `/jrny/`, `/proxie/`), and so are the ROUTINE support, privacy and terms URLs the App Store listing points at.
+- **Footer:** dark, with a contact line. `.proj.flip` now swaps the column widths so the visual keeps the wide column.
+- **Open with Josh:** the Remix block still says it "had its first paying customer within three weeks" (his wording, Nov 8). `~/dev/concierge/facts/canonical-facts.md` (Nov 11) says never to claim Remix customers. He has been asked which one stands.
+

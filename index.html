@@ -14,7 +14,7 @@
     <meta property="og:image" content="https://btfappdev.com/assets/og/home.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="ROUTINE app screens on a blue background" />
+    <meta property="og:image:alt" content="Screens from the five products: Remix Career, ROUTINE, Proxie, Venture Factory and JRNY" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#F3F5F8" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -25,7 +25,19 @@
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="site-header">
+    <nav class="rail" id="rail" aria-label="Products">
+      <div class="rail-in">
+        <a class="brand" href="#main"><span class="brand-lockup"><span class="brand-name">Building The Future</span> <span class="brand-sub">Digital Labs</span></span></a>
+        <div class="rail-links">
+          <a href="#routine" data-p="routine" style="--a:#0276AF">ROUTINE</a>
+          <a href="#remix" data-p="remix" style="--a:#2F5D46">Remix Career</a>
+          <a href="#vfk" data-p="vfk" style="--a:#5B45A8">Venture Factory</a>
+          <a href="#jrny" data-p="jrny" style="--a:#9C3F66">JRNY</a>
+          <a href="#proxie" data-p="proxie" style="--a:#0A7C86">Proxie</a>
+        </div>
+      </div>
+    </nav>
+    <header class="site-header dark">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="/"><span class="brand-lockup"><span class="brand-name">Building The Future</span> <span class="brand-sub">Digital Labs</span></span></a>
         <div class="nav-links">
@@ -36,20 +48,33 @@
       </nav>
     </header>
     <main id="main">
-      <section class="wrap hero">
-        <p class="kicker">Independent product studio</p>
-        <h1 class="h1">Useful software for the moments that shape people.</h1>
-        <p class="sub">Five products across fitness, career strategy, marketing systems, audio storytelling and how professionals represent their work. Each one designed, built and shipped with AI agents as the engineering team.</p>
-        <nav class="index" aria-label="Products">
-          <a href="#routine" style="--a:#0276AF"><b><img class="tile-logo" src="/routine/assets/icon-512.png" alt="" width="512" height="512">ROUTINE</b><span>Adaptive fitness</span><i class="pill live">Live</i></a>
-          <a href="#remix" style="--a:#2F5D46"><b>Remix Career</b><span>Career strategy</span><i class="pill live">Live</i></a>
-          <a href="#vfk" style="--a:#5B45A8"><b>Venture Factory</b><span>Marketing systems</span><i class="pill build">In build</i></a>
-          <a href="#jrny" style="--a:#9C3F66"><b>JRNY</b><span>Audio storytelling</span><i class="pill dev">Prototype</i></a>
-          <a href="#proxie" style="--a:#0A7C86"><b>Proxie</b><span>Career representation</span><i class="pill dev">In development</i></a>
-        </nav>
+      <div class="top">
+      <section class="wrap hero home">
+        <div class="hero-text">
+          <p class="kicker dots"><span aria-hidden="true"><i style="--c:#2B9CD8"></i><i style="--c:#4FA07A"></i><i style="--c:#8B74E0"></i><i style="--c:#D0628F"></i><i style="--c:#2FB3BE"></i></span>Independent product studio</p>
+          <h1 class="h1">Useful software for the moments that shape people.</h1>
+          <p class="sub">Five products across fitness, career strategy, marketing systems, audio storytelling and how professionals represent their work. Each one designed, built and shipped with AI agents as the engineering team.</p>
+          <div class="hero-cta"><a class="button light" href="#work">See the work</a><a class="hero-link" href="#approach">How we build</a></div>
+        </div>
+        <div class="collage">
+          <span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span><span class="glow g4"></span>
+          <a class="c c-web" href="#remix" style="--a:#2F5D46;--d:.05s" aria-label="Remix Career: the marketing site"><span class="clip"><span class="bar"><i></i><i></i><i></i></span><img src="/assets/portfolio/remix-career/mk-hero.webp" width="1800" height="1125" alt="" fetchpriority="high"></span><span class="tag">Remix Career</span></a>
+          <a class="c c-audio" href="#jrny" style="--a:#9C3F66;--d:.35s" aria-label="JRNY: an audio story, playing"><span class="clip"><span class="play"></span><span class="wave" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:95%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:50%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:45%"></i></span><span class="meta">Adventure · 15 min</span></span><span class="tag">JRNY</span></a>
+          <a class="c c-phone" href="#routine" style="--a:#0276AF;--d:.2s" aria-label="ROUTINE: an active workout"><span class="clip"><img src="/assets/portfolio/routine/05-active-workout.webp" width="640" height="1385" alt=""></span><span class="tag">ROUTINE</span></a>
+          <a class="c c-galaxy" href="#proxie" style="--a:#0A7C86;--d:.5s" aria-label="Proxie: the skill galaxy"><span class="clip"><img src="/assets/portfolio/proxie/galaxy-tight.webp" width="1000" height="625" alt=""></span><span class="tag">Proxie</span></a>
+          <a class="c c-loop" href="#vfk" style="--a:#5B45A8;--d:.65s" aria-label="Venture Factory: the weekly loop"><span class="clip"><span class="lp-t">Weekly loop</span><span class="lp-row"><i>Pulse</i><b>›</b><i>Plan</i><b>›</b><i>Draft</i><b>›</b><i class="on">Approve</i><b>›</b><i>Publish</i></span></span><span class="tag">Venture Factory</span></a>
+        </div>
       </section>
+      <nav class="wrap index" aria-label="Products">
+        <a href="#routine" style="--a:#0276AF"><b><img class="tile-logo" src="/routine/assets/icon-512.png" alt="" width="512" height="512">ROUTINE</b><span>Adaptive fitness</span><i class="pill live">Live</i></a>
+        <a href="#remix" style="--a:#2F5D46"><b>Remix Career</b><span>Career strategy</span><i class="pill live">Live</i></a>
+        <a href="#vfk" style="--a:#5B45A8"><b>Venture Factory</b><span>Marketing systems</span><i class="pill build">In build</i></a>
+        <a href="#jrny" style="--a:#9C3F66"><b>JRNY</b><span>Audio storytelling</span><i class="pill dev">Prototype</i></a>
+        <a href="#proxie" style="--a:#0A7C86"><b>Proxie</b><span>Career representation</span><i class="pill dev">In development</i></a>
+      </nav>
+      </div>
 
-      <section id="work" class="wrap work" style="margin-top:clamp(40px,6vw,72px)" aria-label="Work">
+      <section id="work" class="wrap work" style="margin-top:clamp(48px,7vw,88px)" aria-label="Work">
         <article class="proj" id="routine" style="--a:#0276AF;--stage:#DDEEF8;--stage2:#C7E2F3">
           <div class="text">
             <p class="eyebrow">Adaptive fitness <i class="pill live">Live on the App Store</i></p>
@@ -71,9 +96,9 @@
             <dl class="spec"><div><dt>15</dt><dd>reflective questions</dd></div><div><dt>8</dt><dd>AI modules in sequence</dd></div><div><dt>16</dt><dd>career archetypes</dd></div></dl>
             <ul class="hl"><li>Deterministic scoring matches six behavioral dimensions to 16 career archetypes, so results stay consistent.</li><li>Career remixes suggest unconventional uses for transferable skills a person may never have considered.</li><li>Launched publicly in late April 2026 and had its first paying customer within three weeks.</li></ul>
             <p class="stack">Remix (Vite) · Supabase · Stripe · OpenAI · Sentry · Wix (marketing site)</p>
-            <div class="cta-row"><a class="cta" href="https://app.remixcareer.com/sample-report/overview" target="_blank" rel="noopener">Read the sample report <span aria-hidden="true">→</span></a><a class="cta" href="/remix-career/">More on Remix Career <span aria-hidden="true">→</span></a></div>
+            <div class="cta-row"><a class="cta" href="/remix-career/">More on Remix Career <span aria-hidden="true">→</span></a><a class="cta" href="https://www.remixcareer.com/" target="_blank" rel="noopener">Visit remixcareer.com <span aria-hidden="true">→</span></a><a class="cta" href="https://app.remixcareer.com/sample-report/overview" target="_blank" rel="noopener">Read the sample report <span aria-hidden="true">→</span></a></div>
           </div>
-          <div class="stage"><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/remix-career/report-archetype-profile.webp" width="1600" height="1000" alt="The archetype profile in the public sample report" loading="lazy" decoding="async"></figure><div class="web-row"><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/remix-career/report-overview.webp" width="1600" height="1000" alt="The sample report overview, organized as Insights, Strategy and Execution" loading="lazy" decoding="async"></figure><figure class="web"><div class="wb"><i></i><i></i><i></i></div><img src="/assets/portfolio/remix-career/site-home.webp" width="1600" height="1000" alt="The remixcareer.com home page" loading="lazy" decoding="async"></figure></div></div>
+          <div class="stage rx"><figure class="web big"><div class="wb"><i></i><i></i><i></i><em>remixcareer.com</em></div><img src="/assets/portfolio/remix-career/mk-hero.webp" width="1800" height="1125" alt="The remixcareer.com home page: a woman at a laptop beside the headline Your next move should fit more than your résumé" loading="lazy" decoding="async"></figure><div class="rx-row"><figure class="shot"><img src="/assets/portfolio/remix-career/mk-guide.webp" width="560" height="976" alt="An archetype card from the site: The Guide, with a Builder wing, and the person's Signal in one sentence" loading="lazy" decoding="async"></figure><figure class="phone"><img src="/assets/portfolio/remix-career/mk-phone.webp" width="640" height="1088" alt="The remixcareer.com home page on a phone" loading="lazy" decoding="async"></figure></div></div>
         </article>
 
         <article class="proj" id="vfk" style="--a:#5B45A8;--stage:#ECE8FA;--stage2:#DED7F5">
@@ -82,7 +107,7 @@
             <h3 class="name">Venture Factory</h3>
             <p class="lead">One marketing engine that runs several ventures. It plans, drafts, scouts and reports, and a person approves everything before it goes out.</p>
             <dl class="spec"><div><dt>3</dt><dd>ventures on one engine</dd></div><div><dt>4</dt><dd>social channels it publishes to</dd></div><div><dt>0</dt><dd>posts without approval</dd></div></dl>
-            <ul class="hl"><li>The content engine drafts answer-first blog posts structured for search and AI citation, then cascades each one into LinkedIn, X, Instagram, Facebook and email versions, carousel slides included.</li><li>Daily engagement scouting finds real conversations worth joining, drafts replies in the brand's voice and recommends accounts to follow.</li><li>Every Monday a pulse delivers headline stats to act on, then more detailed, actionable insights.</li></ul>
+            <ul class="hl"><li>The content engine drafts answer-first blog posts structured for search and AI citation, then cascades each one into LinkedIn, X, Instagram, Facebook and email versions, carousel slides included.</li><li>Daily engagement scouting finds conversations worth joining, drafts replies in the brand's voice and recommends accounts to follow.</li><li>Every Monday a pulse delivers headline stats to act on, then more detailed, actionable insights.</li></ul>
             <p class="stack">Claude Cowork plugins · Python · GA4 · Search Console · Mixpanel · Google Drive</p>
             <div class="cta-row"><a class="cta" href="/venture-factory/">How Venture Factory works <span aria-hidden="true">→</span></a></div>
           </div>
@@ -99,20 +124,20 @@
             
             <div class="cta-row"><a class="cta" href="/jrny/">Get notified <span aria-hidden="true">→</span></a></div>
           </div>
-          <div class="stage"><img class="flat" src="/assets/portfolio/jrny/jrny-story-builder.webp" alt="How a JRNY story gets made: pick a mood, a kind of story and the time you have, and get a story written by AI and voiced by a synthetic narrator" width="1600" height="520" loading="lazy" decoding="async"></div>
+          <div class="stage jr" role="img" aria-label="How a JRNY story gets made: pick a mood, a kind of story and the time you have, and get a story written by AI and voiced by a synthetic narrator"><div class="jr-pick"><p class="jr-h">Mood</p><div class="jr-chips"><span>Calm</span><span>Uplift</span><span>Motivation</span><span class="on">Adventure</span><span>Mystery</span></div><p class="jr-h">Kind of story</p><div class="jr-chips"><span>Hero's quest</span><span>Coming of age</span><span class="on">Into the unknown</span><span>Inner peace</span></div><p class="jr-h">Time you have</p><div class="jr-chips"><span>5 min</span><span class="on">15 min</span><span>30 min</span></div></div><div class="jr-play"><p class="jr-h">Your story</p><b>Adventure, into the unknown</b><div class="jr-wave"><i style="height:28%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:42%"></i><i style="height:92%"></i><i style="height:60%"></i><i style="height:34%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:52%"></i><i style="height:30%"></i><i style="height:64%"></i><i style="height:86%"></i><i style="height:40%"></i><i style="height:58%"></i><i style="height:90%"></i><i style="height:46%"></i><i style="height:30%"></i><i style="height:72%"></i><i style="height:54%"></i><i style="height:36%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:66%"></i><i style="height:32%"></i><i style="height:44%"></i><i style="height:74%"></i><i style="height:38%"></i><i style="height:60%"></i><i style="height:88%"></i><i style="height:48%"></i><i style="height:30%"></i><i style="height:56%"></i><i style="height:76%"></i><i style="height:40%"></i><i style="height:62%"></i></div><p class="jr-meta">15 min · written by AI · voiced by a synthetic narrator</p></div></div>
         </article>
 
         <article class="proj" id="proxie" style="--a:#0A7C86;--stage:#DDF0F0;--stage2:#C8E6E7">
           <div class="text">
-            <p class="eyebrow">Career representation <i class="pill dev">In development</i></p>
+            <p class="eyebrow">Career representation <i class="pill dev">In development</i><i class="pill live">First site live</i></p>
             <h3 class="name">Proxie</h3>
-            <p class="lead">An AI representative a professional shares by link. It answers a recruiter's questions in the third person, only from material they have approved.</p>
-            <dl class="spec"><div><dt>3</dt><dd>access tiers</dd></div><div><dt>2</dt><dd>ways to answer: by role, by skill</dd></div><div><dt>1</dt><dd>profile, written once</dd></div></dl>
-            <ul class="hl"><li>Each access code belongs to one recipient, so the candidate sees who engaged, what they asked and how deeply they explored.</li><li>Every claim traces back to a source, and the person's own reflections appear as direct quotes.</li></ul>
-            
+            <p class="lead">Proxie builds one structured, sourced model of everything a professional has done. Every surface reads from it: a portfolio site, a skill galaxy, an AI representative and a brief that fits their record to a specific role.</p>
+            <dl class="spec"><div><dt>1</dt><dd>Person Model behind every surface</dd></div><div><dt>3</dt><dd>access tiers: public, deep, private</dd></div><div><dt>2</dt><dd>ways to retrieve: by role, by skill</dd></div></dl>
+            <ul class="hl"><li>Intake works like coaching. Before anyone opens the link, Proxie lists the questions a hiring manager is likely to ask, and the person answers them first.</li><li>The representative speaks about the person in the third person and never invents experience. Their own reflections appear only as marked quotes.</li><li>Attach a job description to an access code and it maps each requirement to evidence from the record, and says plainly where the gaps are.</li><li>Each recipient gets their own code, so the person can see who opened the site and what they read.</li></ul>
+            <p class="stack">Next.js · TypeScript · three.js · Supabase · Netlify</p>
             <div class="cta-row"><a class="cta" href="/proxie/">How Proxie works <span aria-hidden="true">→</span></a></div>
           </div>
-          <div class="stage tiers"><div class="tier t1"><b>Public</b><span>Anyone with the link gets a substantive overview</span></div><div class="tier t2"><b>Deep</b><span>Projects, behavioral answers and quotes, with a personal code</span></div><div class="tier t3"><b>Private</b><span>Never surfaced to anyone</span></div></div>
+          <div class="stage px"><div class="pm" role="img" aria-label="Diagram: a resume, a LinkedIn export, an interview, portfolios and a Remix Career profile feed one Person Model. The model feeds a portfolio site, a skill galaxy, an AI representative and a fit brief for a role."><div class="pm-col pm-in"><span>Resume</span><span>LinkedIn export</span><span>Interview</span><span>Portfolios</span><span>Remix Career profile</span></div><div class="pm-core"><b>Person Model</b><small>every claim tied to its source</small></div><div class="pm-col pm-out"><span>Portfolio site</span><span>Skill galaxy</span><span>AI representative</span><span>Fit brief for a role</span></div></div><figure class="web"><div class="wb"><i></i><i></i><i></i><em>the first site built from a Person Model</em></div><img src="/assets/portfolio/proxie/galaxy.webp" width="1600" height="1000" alt="The skill galaxy on the first Proxie site: capability families such as AI Strategy, AI Building, Ventures and Product and Brand, drawn as linked stars" loading="lazy" decoding="async"></figure></div>
         </article>
       </section>
 
@@ -120,7 +145,7 @@
         <div class="approach">
           <div class="section-head">
             <p class="eyebrow-plain kicker">How we build</p>
-            <h2 class="h2">Quietly capable beats loudly futuristic.</h2>
+            <h2 class="h2">AI agents are the engineering team. A person approves what ships.</h2>
           </div>
           <div class="points">
             <div><b>Plain-language product thinking</b><span>Clear value, clear audience, clear reason to exist.</span></div>
@@ -131,6 +156,10 @@
       </section>
     </main>
     <footer class="site-footer">
+      <div class="footer-cta">
+        <h2>Ask about any of these products.</h2>
+        <a class="mail" href="mailto:connect@btfappdev.com">connect@btfappdev.com</a>
+      </div>
       <div class="footer-inner">
         <p>&copy; Building The Future Digital Labs LLC</p>
         <div class="footer-links">
@@ -141,9 +170,30 @@
           <a href="/proxie/">Proxie</a>
           <a href="/routine/privacy-policy.html">ROUTINE Privacy</a>
           <a href="/routine/terms-of-service.html">ROUTINE Terms</a>
-          <a href="mailto:connect@btfappdev.com">connect@btfappdev.com</a>
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        var rail = document.getElementById("rail"), top = document.querySelector(".top");
+        if (!rail || !top || !("IntersectionObserver" in window)) return;
+        var links = [].slice.call(rail.querySelectorAll("a[data-p]"));
+        new IntersectionObserver(function (e) { rail.classList.toggle("on", !e[0].isIntersecting); }).observe(top);
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            links.forEach(function (l) { l.classList.toggle("cur", l.getAttribute("data-p") === e.target.id); });
+          });
+        }, { rootMargin: "-40% 0px -55% 0px" });
+        [].forEach.call(document.querySelectorAll(".proj[id]"), function (el) { io.observe(el); });
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var rv = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } });
+        }, { rootMargin: "0px 0px -12% 0px" });
+        [].forEach.call(document.querySelectorAll(".proj .stage, .approach"), function (el) {
+          if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add("rv"); rv.observe(el); }
+        });
+      })();
+    </script>
   </body>
 </html>
