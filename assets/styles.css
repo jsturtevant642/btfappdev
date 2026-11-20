@@ -373,7 +373,9 @@ main { display: block; }
 .rx-row { display: flex; align-items: flex-end; justify-content: space-between; margin-top: -17%; padding: 0 4% 0 3%; position: relative; z-index: 2; }
 .rx-row .shot { flex: 0 0 29%; min-width: 0; margin: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 44px rgba(13, 22, 38, 0.3); background: #f4efe6; transform: rotate(-2.5deg); }
 .rx-row .shot img { display: block; width: 100%; height: auto; }
-.rx-row .phone { flex: 0 0 23%; max-width: none; transform: rotate(2.5deg); }
+.rx-row .phone { flex: 0 0 24%; max-width: none; transform: rotate(2.5deg); }
+/* A phone frame holding a full 390x844 iPhone screen: corner radius follows the frame's size */
+.phone.real { border-radius: 15% / 6.95%; border-width: clamp(3px, 0.42vw, 5px); }
 
 /* ---- JRNY stage: how a story gets made ---- */
 .stage.jr { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: stretch; gap: 14px; }
@@ -429,6 +431,9 @@ main { display: block; }
   .pieces, .piece .split { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {
+  .rx-row { margin-top: -13%; padding: 0 3% 0 2%; }
+  .rx-row .shot { flex-basis: 37%; border-radius: 9px; }
+  .rx-row .phone { flex-basis: 31%; }
   .rail .brand { display: none; }
   .rail-in { padding-left: 8px; padding-right: 8px; }
 }
